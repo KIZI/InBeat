@@ -1,0 +1,33 @@
+{
+    "accountId": "INBEAT-TEST",
+    "objectId": "-------",
+    "userId": "uid",
+    "type": "event",
+    "attributes": {
+        "category": "video",
+        "action": "play",
+        "location": "1",
+        "client": {
+            "type": "GAIN",
+            "version": 1
+        }
+    },
+    "object": {
+        "objectId": "-------",
+        "attributes": {
+            "start": 12345
+        },
+        "entities": [
+            {
+                "source": "thd",
+                "lod": "http://dbpedia.org/resource/Museum_Island",
+                "type": "http://dbpedia.org/ontology/Place",
+                "label": "Museum Island",
+                "typeLabel": "Place",
+                "entityType": "named entity",
+                "confidence": 0,
+                "relevance": 0
+            }
+        ]
+    }
+}

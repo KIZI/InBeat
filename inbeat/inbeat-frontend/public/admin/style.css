@@ -1,0 +1,20 @@
+.outputcode {
+    max-height: 30em;
+    overflow:scroll;
+}
+
+.overlay {
+    position:absolute;
+    /*display:none; */
+    /* color with alpha transparency */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* stretch to screen edges */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align:center;
+    vertical-align:middle;
+    padding-top: 300px;
+    z-index: 1000;
+}

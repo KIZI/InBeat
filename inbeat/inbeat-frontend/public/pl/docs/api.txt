@@ -1,0 +1,61 @@
+HOST: $hostname
+      
+--- PL API Documentation (v0.0.1) ---
+---
+This page describes the REST API of PL.
+
+##### Usual Server Responses:
+
+* 200 OK - the request was successful.
+* 201 Created - the request was successful and a data waw saved, resource was created etc.
+* 204 No Content - the request was successful but there is no representation to return.
+* 400 Bad Request - the request was missing required parameters or could not be recognized.
+* 401 Unauthorized - authentication failed or user doesn't have permissions.
+* 403 Forbidden - access denied.
+* 404 Not Found - resource was not found.
+* 405 Method Not Allowed - requested method is not supported for resource.
+
+##### Authentication:
+
+The API uses standard HTTP Basic Authentication mechanism. All your requests has to contain Authentication header. Each account has its own credentials. For the demonstration and testing purposes the username and password of all testing accounts is the same as account identifier.
+
+Example:
+
+
+	AccountId: INBEAT-TEST
+	credentials: INBEAT-TEST:INBEAT-TEST
+
+---
+
+-- Update data --
+
+Update data in storage
+PUT /pl/api/{accountId}/data?uid={userId}
+> Content-Type: application/json
+[{
+"sessionId": "123",
+"objectId": "2",
+"parentObjectId": "1",
+"interest": 0,
+"d_o_thing": 0
+}]
+< 201
+< Content-Type: text/plain
+No content
+
+-- Rule Mining --
+
+Mine rules from data exported using the previous service
+PUT /pl/api/{accountId}/rules?uid={userId}
+> Accept: application/json
+{ "type": "lm|jsapriori|arules", "confidence":0.01, "support": 0.01}
+< 200
+< Content-Type: application/xml | application/json | text/csv
+...
+
+Get mined rules
+GET /pl/api/{accountId}/rules?uid={userId}
+> Accept: */*
+< 200
+< Content-Type: application/xml | application/json | text/csv
+...

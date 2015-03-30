@@ -1,0 +1,43 @@
+{
+	"apps" : [{
+			"name": "InBeat-frontend",
+			"script": "inbeat-frontend/server.js",
+			"watch": true,
+			"env": {
+        		"NODE_ENV": "development"
+    		}
+		},
+		{
+			"name": "InBeat-gain-listener",
+			"script": "inbeat-gain/listener/server.js",
+			"watch": true,
+			"env": {
+        		"NODE_ENV": "development"
+    		}
+		},
+		{
+			"name": "InBeat-gain-api",
+			"script": "inbeat-gain/api/server.js",
+			"watch": true,
+			"env": {
+        		"NODE_ENV": "development"
+    		}
+		},
+		{
+			"name": "InBeat-pl",
+			"script": "inbeat-pl/server.js",
+			"watch": true,
+			"env": {
+        		"NODE_ENV": "development"
+    		}
+		},
+		{
+			"name": "InBeat-rs",
+			"script": "inbeat-rs/server.js",
+			"watch": true,
+			"env": {
+        		"NODE_ENV": "development"
+    		}
+		}
+	]
+}

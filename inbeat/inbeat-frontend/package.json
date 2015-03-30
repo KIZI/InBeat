@@ -1,0 +1,23 @@
+{
+  "name": "inbeat-frontend",
+  "version": "0.0.1",
+  "author": "Jaroslav Kuchar <jaroslav.kuchar@gmail.com>",
+  "description": "inbeat frontend",
+  "private": true,
+  "contributors": [
+    {
+      "name": "Jaroslav Kuchar",
+      "email": "jaroslav.kuchar@gmail.com"
+    }
+  ],
+  "scripts": {
+    "start": "./start.sh"
+  },
+  "dependencies": {
+    "express": "~4.x",
+    "jade": "~1.9.2",
+    "marked": "~0.3.3",
+    "coffee-script": "~1.9.1",
+    "log4js": "~0.6.22"
+  }
+}

@@ -1,0 +1,297 @@
+HOST: $hostname
+      
+--- GAIN API Documentation (v0.0.1) ---
+---
+This page describes the REST API of GAIN. The API provides services for tracking interactions (http/https without authentication) and services for getting results (https with authentication only).
+
+##### Usual Server Responses:
+
+* 200 OK - the request was successful.
+* 201 Created - the request was successful and a data waw saved, resource was created etc.
+* 204 No Content - the request was successful but there is no representation to return.
+* 400 Bad Request - the request was missing required parameters or could not be recognized.
+* 401 Unauthorized - authentication failed or user doesn't have permissions.
+* 403 Forbidden - access denied.
+* 404 Not Found - resource was not found.
+* 405 Method Not Allowed - requested method is not supported for resource.
+
+##### Authentication:
+
+The API uses standard HTTP Basic Authentication mechanism. All your requests has to contain Authentication header. Each account has its own credentials. For the demonstration and testing purposes the username and password of all testing accounts is the same as account identifier.
+
+Example:
+
+
+	AccountId: INBEAT-TEST
+	credentials: INBEAT-TEST:INBEAT-TEST
+
+---
+
+-- Account List - Administration --
+
+Get account details.
+GET /gain/api/admin/account
+< 200
+< Content-Type: application/json
+[ ... ]
+
+Update account details.
+PUT /gain/api/admin/account
+> Accept: application/json
+[ ... ]
+< 200
+< Content-Type: application/json
+No content
+
+-- Account Administration --
+
+Get account details.
+GET /gain/api/{accountId}
+< 200
+< Content-Type: application/json
+{ ... }
+
+Update account details.
+PUT /gain/api/{accountId}
+> Accept: application/json
+{ ... }
+< 200
+< Content-Type: application/json
+No content
+
+Get aggregation rules.
+GET /gain/api/{accountId}/aggregation/rules
+< 200
+< Content-Type: text/plain
+JavaScript
+
+Update aggregation rules.
+PUT /gain/api/{accountId}/aggregation/rules
+> Accept: text/plain
+JavaScript
+< 200
+< Content-Type: application/json
+No content
+
+Get aggregation taxonomy.
+GET /gain/api/{accountId}/aggregation/taxonomy
+< 200
+< Content-Type: application/json
+{ ... }
+
+Update aggregation taxonomy.
+PUT /gain/api/{accountId}/aggregation/taxonomy
+> Accept: application/json
+{ ... }
+< 200
+< Content-Type: application/json
+No content
+
+
+-- Tracking Interactions --
+
+Send interaction to listener (No authetication required).
+
+
+  * [Interaction JSON format description](interaction)
+POST /gain/listener
+> Accept: application/json
+{
+"accountId": "INBEAT-TEST",
+"type": "event",
+"userId": "http://example.com/users/user1",
+"objectId": "http://example.com/objects/object1"
+}
+< 201
+< Content-Type: text/plain
+No content
+
+-- Stats --
+
+Number of all interactions per account.
+GET /gain/api/{accountId}/interaction/number
+< 200
+< Content-Type: application/json
+{ "count": 25 }
+
+Number of all interactions per account and user.
+GET /gain/api/{accountId}/interaction/number?uid={userId}
+< 200
+< Content-Type: application/json
+{ "count": 25 }
+
+Number of all sessions per account.
+GET /gain/api/{accountId}/session/number
+< 200
+< Content-Type: application/json
+{ "count": 25 }
+
+Number of all sessions per account and user.
+GET /gain/api/{accountId}/session/number?uid={userId}
+< 200
+< Content-Type: application/json
+{ "count": 25 }
+
+-- Interactions --
+
+All interactions per account.
+GET /gain/api/{accountId}/interaction
+< 200
+< Content-Type: application/json
+{ ... }
+
+All interactions per account and user.
+GET /gain/api/{accountId}/interaction/?uid={userId}
+< 200
+< Content-Type: application/json
+{ ... }
+
+Delete all interactions per account.
+PUT /gain/api/{accountId}/interaction
+> Content-Type: application/json
+[]
+< 200
+< Content-Type: application/json
+No content
+
+Delete interactions per account and user.
+PUT /gain/api/{accountId}/interaction/?uid={userId}
+> Content-Type: application/json
+[]
+< 200
+< Content-Type: application/json
+No content
+
+-- Description of objects --
+
+List of all attributtes assigned to object.
+GET /gain/api/{accountId}/object/attributes?id={objectId}
+< 200
+< Content-Type: application/json
+{
+"objectId": "http://example.com/objects/object1"
+"attributes": {
+"start": 0.099,
+"end": 5.4590000000000005
+},
+"accountId": "INBEAT-TEST",
+"entities": [
+{
+"source": "thd",
+"lod": "http://dbpedia.org/resource/North",
+"type": "http://dbpedia.org/resource/Noun",
+"label": "Noun",
+"confidence": "0.85",
+"relevance": 0
+}, ...
+]
+}
+
+Upload attributtes assigned to object.
+POST /gain/api/{accountId}/object/attributes
+> Content-Type: application/json
+[{
+"objectId": "http://example.com/objects/object1",
+"attributes": {
+"start": 0.099,
+"end": 5.4590000000000005
+},
+"accountId": "INBEAT-TEST",
+"entities": [
+{
+"source": "thd",
+"lod": "http://dbpedia.org/resource/North",
+"type": "http://dbpedia.org/resource/Noun",
+"label": "Noun",
+"confidence": "0.85",
+"relevance": 0
+}
+]
+}]
+< 201
+< Content-Type: text/plain
+No content
+
+Delete all attributes per account.
+PUT /gain/api/{accountId}/object/attributes
+> Content-Type: application/json
+[]
+< 200
+< Content-Type: application/json
+No content
+
+Delete attributes per account and objectId.
+PUT /gain/api/{accountId}/object/attributes?id=objectId
+> Content-Type: application/json
+[]
+< 200
+< Content-Type: application/json
+No content
+
+List of all taxonomies assigned to object.
+GET /gain/api/{accountId}/object/taxonomies?id={objectId}
+< 200
+< Content-Type: application/json
+{ ... }
+
+List of all flat taxonomies assigned to object.
+GET /gain/api/{accountId}/object/flattaxonomies?id={objectId}
+< 200
+< Content-Type: application/json
+{ ... }
+
+
+-- Interests --
+
+Get interest aggregated by specific userId and objectId
+GET /gain/api/{accountId}/object/interests?id={objectId}&uid={userId}
+< 200
+< Content-Type: application/json
+{ ... }
+
+Get interest aggregated by specific userId and sessionId
+GET /gain/api/{accountId}/session/interests?uid={userId}
+< 200
+< Content-Type: application/json
+{ ... }
+
+
+-- Exports --
+
+Export all interests for specific userId, aggregated by sessions. Including description of objects using flat taxonomies.
+GET /gain/api/{accountId}/export/interests?uid={userId}
+> Accept: application/json
+< 200
+< Content-Type: application/json
+{ ... }
+
+Export all interests for specific userId, aggregated by sessions. Including description of objects using flat taxonomies.
+GET /gain/api/{accountId}/export/interests?uid={userId}
+> Accept: text/csv
+< 200
+< Content-Type: text/csv
+{ ... }
+
+Export all interests for specific userId, aggregated by sessions. Including description of objects using flat taxonomies.
+GET /gain/api/{accountId}/export/interests?uid={userId}
+> Accept: text/plain
+< 200
+< Content-Type: text/plain
+{ ... }
+
+Delete all exports os interests for accuntId, aggregated by sessions.
+PUT /gain/api/{accountId}/export/interests
+> Accept: application/json
+[]
+< 200
+< Content-Type: application/json
+No content
+
+Delete all exports os interests for specific userId, aggregated by sessions.
+PUT /gain/api/{accountId}/export/interests?uid={userId}
+> Accept: application/json
+[]
+< 200
+< Content-Type: application/json
+No content
+

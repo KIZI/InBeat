@@ -1,0 +1,1566 @@
+{
+    "name": "Thing",
+    "uri": "http://dbpedia.org/ontology/#Thing",
+    "children": [
+        {
+            "uri": "http://dbpedia.org/ontology/Activity",
+            "name": "Activity",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Sport",
+                    "name": "Sport"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Game",
+                    "name": "Game"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Agent",
+            "name": "Agent",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Organisation",
+                    "name": "Organisation",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/PoliticalParty",
+                            "name": "PoliticalParty"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/SportsLeague",
+                            "name": "SportsLeague",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/TennisLeague",
+                                    "name": "TennisLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/VideogamesLeague",
+                                    "name": "VideogamesLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/VolleyballLeague",
+                                    "name": "VolleyballLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/AustralianFootballLeague",
+                                    "name": "AustralianFootballLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/AutoRacingLeague",
+                                    "name": "AutoRacingLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BaseballLeague",
+                                    "name": "BaseballLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BasketballLeague",
+                                    "name": "BasketballLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/CricketLeague",
+                                    "name": "CricketLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/CurlingLeague",
+                                    "name": "CurlingLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/CyclingLeague",
+                                    "name": "CyclingLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/GolfLeague",
+                                    "name": "GolfLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/IceHockeyLeague",
+                                    "name": "IceHockeyLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/InlineHockeyLeague",
+                                    "name": "InlineHockeyLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/LacrosseLeague",
+                                    "name": "LacrosseLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/MixedMartialArtsLeague",
+                                    "name": "MixedMartialArtsLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/MotorcycleRacingLeague",
+                                    "name": "MotorcycleRacingLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/PoloLeague",
+                                    "name": "PoloLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/RadioControlledRacingLeague",
+                                    "name": "RadioControlledRacingLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/RugbyLeague",
+                                    "name": "RugbyLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/SoftballLeague",
+                                    "name": "SoftballLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/SpeedwayLeague",
+                                    "name": "SpeedwayLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/AmericanFootballLeague",
+                                    "name": "AmericanFootballLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BowlingLeague",
+                                    "name": "BowlingLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/CanadianFootballLeague",
+                                    "name": "CanadianFootballLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/FieldHockeyLeague",
+                                    "name": "FieldHockeyLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/HandballLeague",
+                                    "name": "HandballLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/PaintballLeague",
+                                    "name": "PaintballLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/SoccerLeague",
+                                    "name": "SoccerLeague",
+                                    "children": [
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/SoccerLeagueSeason",
+                                            "name": "SoccerLeagueSeason"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BoxingLeague",
+                                    "name": "BoxingLeague"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/FormulaOneRacing",
+                                    "name": "FormulaOneRacing"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/SportsTeamSeason",
+                            "name": "SportsTeamSeason",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/SoccerClubSeason",
+                                    "name": "SoccerClubSeason"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/TradeUnion",
+                            "name": "TradeUnion"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Broadcaster",
+                            "name": "Broadcaster",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/TelevisionStation",
+                                    "name": "TelevisionStation"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BroadcastNetwork",
+                                    "name": "BroadcastNetwork"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/RadioStation",
+                                    "name": "RadioStation"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/GeopoliticalOrganisation",
+                            "name": "GeopoliticalOrganisation"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/GovernmentAgency",
+                            "name": "GovernmentAgency"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Legislature",
+                            "name": "Legislature"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Non-ProfitOrganisation",
+                            "name": "Non-ProfitOrganisation"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Band",
+                            "name": "Band"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Company",
+                            "name": "Company",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/LawFirm",
+                                    "name": "LawFirm"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/RecordLabel",
+                                    "name": "RecordLabel"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Airline",
+                                    "name": "Airline"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/EducationalInstitution",
+                            "name": "EducationalInstitution",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/School",
+                                    "name": "School"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/University",
+                                    "name": "University"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/College",
+                                    "name": "College"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Library",
+                                    "name": "Library"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/MilitaryUnit",
+                            "name": "MilitaryUnit"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/SportsTeam",
+                            "name": "SportsTeam",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BaseballTeam",
+                                    "name": "BaseballTeam"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/CanadianFootballTeam",
+                                    "name": "CanadianFootballTeam"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/SpeedwayTeam",
+                                    "name": "SpeedwayTeam"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/AmericanFootballTeam",
+                                    "name": "AmericanFootballTeam"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/RugbyClub",
+                                    "name": "RugbyClub"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/SoccerClub",
+                                    "name": "SoccerClub",
+                                    "children": [
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/NationalSoccerClub",
+                                            "name": "NationalSoccerClub"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BasketballTeam",
+                                    "name": "BasketballTeam"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/HockeyTeam",
+                                    "name": "HockeyTeam"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/SambaSchool",
+                            "name": "SambaSchool"
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Person",
+                    "name": "Person",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/Philosopher",
+                            "name": "Philosopher"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/PlayboyPlaymate",
+                            "name": "PlayboyPlaymate"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Referee",
+                            "name": "Referee"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Royalty",
+                            "name": "Royalty",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BritishRoyalty",
+                                    "name": "BritishRoyalty"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/PolishKing",
+                                    "name": "PolishKing"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Scientist",
+                            "name": "Scientist"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/SoccerManager",
+                            "name": "SoccerManager"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Ambassador",
+                            "name": "Ambassador"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Artist",
+                            "name": "Artist",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/ComicsCreator",
+                                    "name": "ComicsCreator"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/MusicalArtist",
+                                    "name": "MusicalArtist"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Writer",
+                                    "name": "Writer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Comedian",
+                                    "name": "Comedian"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Actor",
+                                    "name": "Actor",
+                                    "children": [
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/VoiceActor",
+                                            "name": "VoiceActor"
+                                        },
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/AdultActor",
+                                            "name": "AdultActor"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Athlete",
+                            "name": "Athlete",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BadmintonPlayer",
+                                    "name": "BadmintonPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Boxer",
+                                    "name": "Boxer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BullFighter",
+                                    "name": "BullFighter"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/FigureSkater",
+                                    "name": "FigureSkater"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/FormulaOneRacer",
+                                    "name": "FormulaOneRacer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/GridironFootballPlayer",
+                                    "name": "GridironFootballPlayer",
+                                    "children": [
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/AmericanFootballPlayer",
+                                            "name": "AmericanFootballPlayer"
+                                        },
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/CanadianFootballPlayer",
+                                            "name": "CanadianFootballPlayer"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/MartialArtist",
+                                    "name": "MartialArtist"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/NascarDriver",
+                                    "name": "NascarDriver"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/SnookerPlayer",
+                                    "name": "SnookerPlayer",
+                                    "children": [
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/SnookerChamp",
+                                            "name": "SnookerChamp"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/SoccerPlayer",
+                                    "name": "SoccerPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/TeamMember",
+                                    "name": "TeamMember"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/VolleyballPlayer",
+                                    "name": "VolleyballPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Wrestler",
+                                    "name": "Wrestler"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BasketballPlayer",
+                                    "name": "BasketballPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Cricketer",
+                                    "name": "Cricketer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Cyclist",
+                                    "name": "Cyclist"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/GaelicGamesPlayer",
+                                    "name": "GaelicGamesPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/GolfPlayer",
+                                    "name": "GolfPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/IceHockeyPlayer",
+                                    "name": "IceHockeyPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/NationalCollegiateAthleticAssociationAthlete",
+                                    "name": "NationalCollegiateAthleticAssociationAthlete"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/RugbyPlayer",
+                                    "name": "RugbyPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Swimmer",
+                                    "name": "Swimmer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/BaseballPlayer",
+                                    "name": "BaseballPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/TennisPlayer",
+                                    "name": "TennisPlayer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/AustralianRulesFootballPlayer",
+                                    "name": "AustralianRulesFootballPlayer"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Celebrity",
+                            "name": "Celebrity"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/ChessPlayer",
+                            "name": "ChessPlayer"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Cleric",
+                            "name": "Cleric",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Priest",
+                                    "name": "Priest"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Saint",
+                                    "name": "Saint"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Cardinal",
+                                    "name": "Cardinal"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/ChristianPatriarch",
+                                    "name": "ChristianPatriarch"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Pope",
+                                    "name": "Pope"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/ChristianBishop",
+                                    "name": "ChristianBishop"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/CollegeCoach",
+                            "name": "CollegeCoach"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Criminal",
+                            "name": "Criminal"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/FictionalCharacter",
+                            "name": "FictionalCharacter",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/ComicsCharacter",
+                                    "name": "ComicsCharacter"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Journalist",
+                            "name": "Journalist"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/MilitaryPerson",
+                            "name": "MilitaryPerson"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Monarch",
+                            "name": "Monarch"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/OrganisationMember",
+                            "name": "OrganisationMember",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/SportsTeamMember",
+                                    "name": "SportsTeamMember"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Architect",
+                            "name": "Architect"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Judge",
+                            "name": "Judge"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Model",
+                            "name": "Model"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/OfficeHolder",
+                            "name": "OfficeHolder"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/PokerPlayer",
+                            "name": "PokerPlayer"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Astronaut",
+                            "name": "Astronaut"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Politician",
+                            "name": "Politician",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/PrimeMinister",
+                                    "name": "PrimeMinister"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Senator",
+                                    "name": "Senator"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/VicePrimeMinister",
+                                    "name": "VicePrimeMinister"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Mayor",
+                                    "name": "Mayor"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/President",
+                                    "name": "President"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Congressman",
+                                    "name": "Congressman"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Lieutenant",
+                                    "name": "Lieutenant"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Deputy",
+                                    "name": "Deputy"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Chancellor",
+                                    "name": "Chancellor"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/MemberOfParliament",
+                                    "name": "MemberOfParliament"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/VicePresident",
+                                    "name": "VicePresident"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Governor",
+                                    "name": "Governor"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/AnatomicalStructure",
+            "name": "AnatomicalStructure",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Artery",
+                    "name": "Artery"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Bone",
+                    "name": "Bone"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Brain",
+                    "name": "Brain"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Embryology",
+                    "name": "Embryology"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Lymph",
+                    "name": "Lymph"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Muscle",
+                    "name": "Muscle"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Nerve",
+                    "name": "Nerve"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Vein",
+                    "name": "Vein"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Award",
+            "name": "Award",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Decoration",
+                    "name": "Decoration"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Biomolecule",
+            "name": "Biomolecule",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Gene",
+                    "name": "Gene",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/HumanGene",
+                            "name": "HumanGene"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/MouseGene",
+                            "name": "MouseGene"
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Protein",
+                    "name": "Protein"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/CelestialBody",
+            "name": "CelestialBody",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Galaxy",
+                    "name": "Galaxy"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Planet",
+                    "name": "Planet"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Asteroid",
+                    "name": "Asteroid"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/ChemicalSubstance",
+            "name": "ChemicalSubstance",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Mineral",
+                    "name": "Mineral"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/ChemicalCompound",
+                    "name": "ChemicalCompound"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/ChemicalElement",
+                    "name": "ChemicalElement"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Colour",
+            "name": "Colour"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Constellation",
+            "name": "Constellation"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Currency",
+            "name": "Currency"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Database",
+            "name": "Database",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/BiologicalDatabase",
+                    "name": "BiologicalDatabase"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Device",
+            "name": "Device",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Weapon",
+                    "name": "Weapon"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/AutomobileEngine",
+                    "name": "AutomobileEngine"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Drug",
+            "name": "Drug"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Event",
+            "name": "Event",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/FilmFestival",
+                    "name": "FilmFestival"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/MilitaryConflict",
+                    "name": "MilitaryConflict"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/MusicFestival",
+                    "name": "MusicFestival"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/SpaceMission",
+                    "name": "SpaceMission"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/YearInSpaceflight",
+                    "name": "YearInSpaceflight"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Convention",
+                    "name": "Convention"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Election",
+                    "name": "Election"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/SportsEvent",
+                    "name": "SportsEvent",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/TennisTournament",
+                            "name": "TennisTournament"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/WomensTennisAssociationTournament",
+                            "name": "WomensTennisAssociationTournament"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/FootballMatch",
+                            "name": "FootballMatch"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/GrandPrix",
+                            "name": "GrandPrix"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Race",
+                            "name": "Race"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/SoccerTournament",
+                            "name": "SoccerTournament"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/WrestlingEvent",
+                            "name": "WrestlingEvent"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/MixedMartialArtsEvent",
+                            "name": "MixedMartialArtsEvent"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Olympics",
+                            "name": "Olympics"
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Year",
+                    "name": "Year"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Flag",
+            "name": "Flag"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Food",
+            "name": "Food",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Beverage",
+                    "name": "Beverage"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/GovernmentType",
+            "name": "GovernmentType"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Holiday",
+            "name": "Holiday"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Ideology",
+            "name": "Ideology"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Instrument",
+            "name": "Instrument"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Language",
+            "name": "Language"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/LegalCase",
+            "name": "LegalCase",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/SupremeCourtOfTheUnitedStatesCase",
+                    "name": "SupremeCourtOfTheUnitedStatesCase"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Letter",
+            "name": "Letter"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/MeanOfTransportation",
+            "name": "MeanOfTransportation",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Rocket",
+                    "name": "Rocket"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Ship",
+                    "name": "Ship"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/SpaceStation",
+                    "name": "SpaceStation"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Aircraft",
+                    "name": "Aircraft"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Locomotive",
+                    "name": "Locomotive"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/SpaceShuttle",
+                    "name": "SpaceShuttle"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Automobile",
+                    "name": "Automobile"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Spacecraft",
+                    "name": "Spacecraft"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Name",
+            "name": "Name",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/GivenName",
+                    "name": "GivenName"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Surname",
+                    "name": "Surname"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/OlympicResult",
+            "name": "OlympicResult"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/ProgrammingLanguage",
+            "name": "ProgrammingLanguage"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Sales",
+            "name": "Sales"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/SnookerWorldRanking",
+            "name": "SnookerWorldRanking"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Species",
+            "name": "Species",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/Archaea",
+                    "name": "Archaea"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Eukaryote",
+                    "name": "Eukaryote",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/Fungus",
+                            "name": "Fungus"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Animal",
+                            "name": "Animal",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Fish",
+                                    "name": "Fish"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Insect",
+                                    "name": "Insect"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Reptile",
+                                    "name": "Reptile"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Amphibian",
+                                    "name": "Amphibian"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Bird",
+                                    "name": "Bird"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Mammal",
+                                    "name": "Mammal"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Mollusca",
+                                    "name": "Mollusca"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Arachnid",
+                                    "name": "Arachnid"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Crustacean",
+                                    "name": "Crustacean"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Plant",
+                            "name": "Plant",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Conifer",
+                                    "name": "Conifer"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Cycad",
+                                    "name": "Cycad"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Fern",
+                                    "name": "Fern"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Gnetophytes",
+                                    "name": "Gnetophytes"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/GreenAlga",
+                                    "name": "GreenAlga"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/ClubMoss",
+                                    "name": "ClubMoss"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Ginkgo",
+                                    "name": "Ginkgo"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Moss",
+                                    "name": "Moss"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/FloweringPlant",
+                                    "name": "FloweringPlant",
+                                    "children": [
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/Grape",
+                                            "name": "Grape"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Bacteria",
+                    "name": "Bacteria"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Tax",
+            "name": "Tax"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/TopicalConcept",
+            "name": "TopicalConcept"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Unknown",
+            "name": "Unknown"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Work",
+            "name": "Work",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/WrittenWork",
+                    "name": "WrittenWork",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/Book",
+                            "name": "Book"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/ComicBook",
+                            "name": "ComicBook"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/PeriodicalLiterature",
+                            "name": "PeriodicalLiterature",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/AcademicJournal",
+                                    "name": "AcademicJournal"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Magazine",
+                                    "name": "Magazine"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Newspaper",
+                                    "name": "Newspaper"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Play",
+                            "name": "Play"
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/TelevisionSeason",
+                    "name": "TelevisionSeason"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Website",
+                    "name": "Website"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Artwork",
+                    "name": "Artwork",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/Painting",
+                            "name": "Painting"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Sculpture",
+                            "name": "Sculpture"
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Musical",
+                    "name": "Musical"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/TelevisionShow",
+                    "name": "TelevisionShow"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Film",
+                    "name": "Film"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/TelevisionEpisode",
+                    "name": "TelevisionEpisode"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/MusicalWork",
+                    "name": "MusicalWork",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/Song",
+                            "name": "Song",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/EurovisionSongContestEntry",
+                                    "name": "EurovisionSongContestEntry"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Album",
+                            "name": "Album"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Single",
+                            "name": "Single"
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Software",
+                    "name": "Software",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/VideoGame",
+                            "name": "VideoGame"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Disease",
+            "name": "Disease"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/MusicGenre",
+            "name": "MusicGenre"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Place",
+            "name": "Place",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/PopulatedPlace",
+                    "name": "PopulatedPlace",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/Settlement",
+                            "name": "Settlement",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Town",
+                                    "name": "Town"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Village",
+                                    "name": "Village"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/City",
+                                    "name": "City"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/AdministrativeRegion",
+                            "name": "AdministrativeRegion"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Atoll",
+                            "name": "Atoll"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Continent",
+                            "name": "Continent"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Country",
+                            "name": "Country"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Island",
+                            "name": "Island"
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/SiteOfSpecialScientificInterest",
+                    "name": "SiteOfSpecialScientificInterest"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/HistoricPlace",
+                    "name": "HistoricPlace"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/Monument",
+                    "name": "Monument"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/MountainPass",
+                    "name": "MountainPass"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/NaturalPlace",
+                    "name": "NaturalPlace",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/Volcano",
+                            "name": "Volcano"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Cave",
+                            "name": "Cave"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Mountain",
+                            "name": "Mountain"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Valley",
+                            "name": "Valley"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/BodyOfWater",
+                            "name": "BodyOfWater",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Stream",
+                                    "name": "Stream",
+                                    "children": [
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/Canal",
+                                            "name": "Canal"
+                                        },
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/River",
+                                            "name": "River"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Lake",
+                                    "name": "Lake"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/LunarCrater",
+                            "name": "LunarCrater"
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/MountainRange",
+                            "name": "MountainRange"
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/ProtectedArea",
+                    "name": "ProtectedArea"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/SkiArea",
+                    "name": "SkiArea"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/WineRegion",
+                    "name": "WineRegion"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/ArchitecturalStructure",
+                    "name": "ArchitecturalStructure",
+                    "children": [
+                        {
+                            "uri": "http://dbpedia.org/ontology/Building",
+                            "name": "Building",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/HistoricBuilding",
+                                    "name": "HistoricBuilding"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Hospital",
+                                    "name": "Hospital"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Lighthouse",
+                                    "name": "Lighthouse"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Museum",
+                                    "name": "Museum"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/ReligiousBuilding",
+                                    "name": "ReligiousBuilding",
+                                    "children": [
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/Church",
+                                            "name": "Church"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/ShoppingMall",
+                                    "name": "ShoppingMall"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Skyscraper",
+                                    "name": "Skyscraper"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Theatre",
+                                    "name": "Theatre"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Arena",
+                                    "name": "Arena"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Hotel",
+                                    "name": "Hotel"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Restaurant",
+                                    "name": "Restaurant"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Stadium",
+                                    "name": "Stadium"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Infrastructure",
+                            "name": "Infrastructure",
+                            "children": [
+                                {
+                                    "uri": "http://dbpedia.org/ontology/LaunchPad",
+                                    "name": "LaunchPad"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/PowerStation",
+                                    "name": "PowerStation"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/RouteOfTransportation",
+                                    "name": "RouteOfTransportation",
+                                    "children": [
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/RailwayLine",
+                                            "name": "RailwayLine"
+                                        },
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/Road",
+                                            "name": "Road"
+                                        },
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/Tunnel",
+                                            "name": "Tunnel",
+                                            "children": [
+                                                {
+                                                    "uri": "http://dbpedia.org/ontology/WaterwayTunnel",
+                                                    "name": "WaterwayTunnel"
+                                                },
+                                                {
+                                                    "uri": "http://dbpedia.org/ontology/RailwayTunnel",
+                                                    "name": "RailwayTunnel"
+                                                },
+                                                {
+                                                    "uri": "http://dbpedia.org/ontology/RoadTunnel",
+                                                    "name": "RoadTunnel"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/RoadJunction",
+                                            "name": "RoadJunction"
+                                        },
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/Bridge",
+                                            "name": "Bridge"
+                                        },
+                                        {
+                                            "uri": "http://dbpedia.org/ontology/PublicTransitSystem",
+                                            "name": "PublicTransitSystem"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Station",
+                                    "name": "Station"
+                                },
+                                {
+                                    "uri": "http://dbpedia.org/ontology/Airport",
+                                    "name": "Airport"
+                                }
+                            ]
+                        },
+                        {
+                            "uri": "http://dbpedia.org/ontology/Park",
+                            "name": "Park"
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/WorldHeritageSite",
+                    "name": "WorldHeritageSite"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/Project",
+            "name": "Project",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/ResearchProject",
+                    "name": "ResearchProject"
+                }
+            ]
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/PersonFunction",
+            "name": "PersonFunction"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/EthnicGroup",
+            "name": "EthnicGroup"
+        },
+        {
+            "uri": "http://dbpedia.org/ontology/GeneLocation",
+            "name": "GeneLocation",
+            "children": [
+                {
+                    "uri": "http://dbpedia.org/ontology/MouseGeneLocation",
+                    "name": "MouseGeneLocation"
+                },
+                {
+                    "uri": "http://dbpedia.org/ontology/HumanGeneLocation",
+                    "name": "HumanGeneLocation"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title #{title}
+    meta(name="viewport",content="width=device-width, initial-scale=1.0")
+
+    link(rel='stylesheet', href='/css/bootstrap.min.css',media='screen')
+    link(rel='stylesheet', href='/css/animate.min.css',media='screen')
+
+    script(src='/js/jquery.min.js')
+    script(src='/js/jquery-ui.js')
+    script(src='/js/angular.min.js')
+    script(src='/js/bootstrap.min.js')
+    script(src='/js/angular-cookies.min.js')
+
+  body
+    div.navbar.navbar-inverse.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          ul.nav.navbar-nav
+            li
+              a(href="/") InBeat
+            li(class="dropdown")
+              a(href="#", class="dropdown-toggle",data-toggle="dropdown") Modules
+                b(class="caret")
+              ul.dropdown-menu
+                li
+                  a(href="/gain/docs") GAIN (General Analytics INterceptor)
+                li
+                  a(href="/pl/docs") PL (Preference Learning)
+                li
+                  a(href="/rs/docs") RS (Recommender System)
+            li
+              a(href="/demo/") Demos
+            li
+              a(href="/publications") Publications
+            li
+              a(href="/contact") Contact
+
+    div(class="container",style="padding-top: 4.5em;")
+      ul.breadcrumb
+        li
+          a(href="/") Home
+        each item in breadcrumbs
+          li
+            a(href=item.link)= item.title
+
+      div(style="min-height:300px;")!= content
+      div(class="footer")
+        hr
+        p
+          em
+            strong DISCLAIMER:
+          em &nbsp; InBeat is an experimental academic project. This web site and interface is provided only for demonstration purposes. No precautions relating to service availability, privacy and safety of data are in place. Use at your own risk.
+        p.
+          &copy; 2012-2015

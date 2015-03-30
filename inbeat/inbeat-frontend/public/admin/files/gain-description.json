@@ -1,0 +1,42 @@
+[
+    {
+        "accountId": "LINKEDTV-TEST",
+        "objectId": "-------",
+        "parentObjectId": "",
+        "attributes": {
+            "start": 12345
+        },
+        "entities": [
+            {
+                "relevance": 0,
+                "confidence": 0,
+                "entityType": "named entity",
+                "typeLabel": "Place",
+                "label": "Museum Island",
+                "type": "http://dbpedia.org/ontology/Place",
+                "lod": "http://dbpedia.org/resource/Museum_Island",
+                "source": "thd"
+            }
+        ]
+    },
+    {
+        "accountId": "LINKEDTV-TEST",
+        "objectId": "------2",
+        "parentObjectId": "",
+        "attributes": {
+            "start": 12345
+        },
+        "entities": [
+            {
+                "relevance": 0,
+                "confidence": 0,
+                "entityType": "named entity",
+                "typeLabel": "Place",
+                "label": "Museum Island",
+                "type": "http://dbpedia.org/ontology/Place",
+                "lod": "http://dbpedia.org/resource/Museum_Island",
+                "source": "thd"
+            }
+        ]
+    }
+]

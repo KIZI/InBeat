@@ -21,7 +21,7 @@ Interest Beat is a service for recommendation of content. InBeat was designed wi
 
 ### Installation
 
-You can use InBeat services as a seto of independent modules. Each module provides REST API as a self-reliant http service running on a specific port. All setting can be changed either in global config file (./inbeat/config.js) or in specific config file for each module (./inbeat/{module}/config.js).
+You can use InBeat services as a set of independent modules. Each module provides REST API as a self-reliant http service running on a specific port. All setting can be changed either in global config file (./inbeat/config.js) or in specific config file for each module (./inbeat/{module}/config.js).
 
 Go to the 'inbeat' directory and run installation of nodejs dependencies:
 
@@ -38,7 +38,7 @@ Each service runs on a predefined port and you can use REST API as the main comm
 
 ## Installation - Chef cookbook (Recommended)
 
-We provide a set of installation scripts to build a complete image with InBeat services. The following tutorial provides local installation for testing and development purposes. For production installation the same scripts for [Chef](https://www.chef.io/) in cookbooks folder.
+We provide a set of installation scripts to build a complete image with InBeat services. The following tutorial provides local installation for testing and development purposes. For production installation the same set of scripts can be used for [Chef](https://www.chef.io/) (./cookbooks folder).
 
 ### Prerequisites
 
@@ -67,9 +67,9 @@ All examples can be tested using the minimalistic admin web interafce that is bu
 
 ### Accounts
 
-InBeat supports a usage of accounts. Each account is represented by its identifier (string), status ("verified" for active account), sessionization (number of minutes that specifies length of gap between two sessions) and credentials for authentication (HTTP Basic format username:password).
+InBeat supports a usage of accounts. Each account is represented by its identifier (string), status ("verified" for active account), sessionization (number of minutes that specifies length of gap between two interactions to start a new session) and credentials for authentication (HTTP Basic format username:password).
 
-Create verified account with identifier _INBEAT-TEST_, username and password _INBEAT-TEST:INBEAT-TEST_.
+Create verified account with identifier _INBEAT-TEST_, username and password _INBEAT-TEST:INBEAT-TEST_. Admin credentials are configured in (./inbeat/config.js).
 
 ```bash
 # Create account in InBeat
@@ -85,9 +85,9 @@ curl --user "admin:admin" -X PUT --header "Content-Type: application/json" http:
 
 ### Aggregation Rules
 
-Aggregation rules provide causes increase or decrease of final interest for object that the user interacted with.
+Aggregation rules cause increase or decrease of final interest for object that the user interacted with. Aggregation Rules are specific setting valid per account. They have to be created for each account.
 
-E.g. if user provides interaction that represents "like", interest is increased. For all other interactions interest is increased.
+E.g. if user provides interaction that represents "like", interest is increased. For all other interactions interest is decreased.
 
 ```bash
 # Create aggregation rules
@@ -97,7 +97,7 @@ curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application
 ```
 ### Aggregation Taxonomy
 
-Aggregation taxonomy can be used to infer more general categories based on specification of types that describe the objects.
+Aggregation taxonomy can be used to infer more general categories based on a specification of types that describe the objects. Taxonomy is a specific setting valid per account. It has to be created for each account.
 
 For the following taxonomy:
 
@@ -141,7 +141,7 @@ curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application
 
 ### Events
 
-Events that are used as interest clues.
+Events that are used as a representation of interaction with objects. Each event is used as an interest clue according to a predefined set of aggregation rules.
 
 E.g. user (identified by _http://example.com/users/user1_) likes first object (identified by _http://example.com/objects/object1_) and dislikes second object (identified by _http://example.com/objects/object2_). First object is about _televisions_ (_Television_) and the second is about _food_ (_Onion_).
 
@@ -184,7 +184,7 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8080/gai
 
 ### Export of interests
 
-InBeat GAIN module provides export of aggregated data, that contain information about final interest per object and semantic description of object (including propagation in taxonomy)
+InBeat GAIN module provides an export of aggregated data. It contains information about the final interest per object and the semantic description of object (including propagation in taxonomy).
 
 ```bash
 # Get export
@@ -221,14 +221,14 @@ Example of output:
 
 ### Preference Learning
 
-The export can uploaded to Preference Learning module in order to perform rule mining
+The export can be uploaded to the Preference Learning module in order to use this data as an input for rule mining. The set of rules represents user preferences.
 
 ```bash
 # Upload to PL
 curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@export.json "http://localhost:8080/pl/api/INBEAT-TEST/data?uid=http://example.com/users/user1"
 ```
 
-Rule mining can be initiated with specic parameters: type (jsapriori|arules|lm) , support and confidence.
+Rule mining can be initiated with a set of parameters: type (jsapriori|arules|lm) , support and confidence.
 
 ```bash
 # Get rules
@@ -253,7 +253,7 @@ Example of output:
   "confidence": 1,
   "text": "{d_o_Food=1} => {interest=negative}"
 },
-..., {
+, {
   "antecedent": {
     "d_o_Electronics": "1"
   },
@@ -270,17 +270,17 @@ Example of output:
 
 ### Classification/Recommender System
 
-A set of rules can be uploade to Recommender System module
+A set of generated rules can be uploaded to the Recommender System module.
 
 ```bash
 # Upload rules RS
 curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@rules.json "http://localhost:8080/rs/api/INBEAT-TEST/rules?uid=http://example.com/users/user1"
 ```
 
-Create descriptions of new objects
+The same set of objects used for learning of interest can be used for classification. However, it might be used usually only for for validation. New additional objects can be created, including descriptions:
 
 ```bash
-# Create new objects 
+# Create new objects
 curl --user "INBEAT-TEST:INBEAT-TEST" -X POST --header "Content-Type: application/json" "http://localhost:8080/gain/api/INBEAT-TEST/object/attributes" --data-binary '
 [
     {
@@ -304,7 +304,7 @@ curl --user "INBEAT-TEST:INBEAT-TEST" -X POST --header "Content-Type: applicatio
         ]
     }
 ]'
-
+```
 
 Objects are classified using rule engine. Output is a rank that represents user interest for specific object.
 
@@ -329,6 +329,8 @@ Example of output for the fourth object (about _Radios_, _Radio_). Since user li
 
 ## References & Awards
 
+Publications:
+
 * Kuchař J., Kliegr T. **Bag-of-Entities text representation for client-side (video) recommender systems**. In First Workshop on Recommender Systems for Television and online Video (RecSysTV), ACM RecSys 2014 Foster City, Silicon Valley, USA, 6th-10th October 2014
   * http://recsystv.org/
 * Kuchař J., Kliegr T. **Doporučování multimediálního obsahu s využitím senzoru Microsoft Kinect.** Znalosti 2014. 13th Annual Conference, Jasná pod Chopkom, Nízké Tatry, Slovakia, ISBN 978-80-245-2054-4, 2014
@@ -344,14 +346,17 @@ Example of output for the fourth object (about _Radios_, _Radio_). Since user li
 * Kuchař J., Kliegr T.: **GAIN: Analysis of Implicit Feedback on Semantically Annotated Content** , 7th Workshop on Intelligent and Knowledge Oriented Technologies, Smolenice, Slovakia, 2012
   * http://wikt2012.fiit.stuba.sk/data/wikt2012-proceedings.pdf
 
+Awards:
+
 * 3rd place in CLEF-NEWSREEL, Sheffield, UK
   * http://www.clef-newsreel.org/previous-campaigns/newsreel-2014/
 * Runner-up prize in International News Recommender Systems Workshop and Challenge, Hong Kong, China
   * https://sites.google.com/site/newsrec2013/challenge
 
-## Authors
+## Contributors
 
 - Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+- Tomáš Kliegr (https://github.com/kliegr)
 
 ## Licence
 BSD License

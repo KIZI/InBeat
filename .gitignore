@@ -1,3 +1,10 @@
+#### OS-specific
+.DS_Store
+
+#### vagrant
+.vagrant/
+
+#### nodejs
 # Logs
 *.log
 

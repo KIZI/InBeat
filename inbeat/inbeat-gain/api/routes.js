@@ -6,7 +6,7 @@ var AggregationTaxonomy = require('inbeat-bl').getModel('aggregation-taxonomy');
 
 var ObjectTaxonomy = require('inbeat-bl').getLogic('object-taxonomy');
 var AggregationTableFormat = require('inbeat-bl').getModel('aggregation-tableformat');
-// var UserInterest = require('inbeat-bl').getLogic('user-interest');
+var UserInterest = require('inbeat-bl').getLogic('user-interest');
 
 var Logger = require('../config').Logger;
 var async = require('async');

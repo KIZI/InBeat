@@ -21,7 +21,7 @@ Interest Beat is a service for recommendation of content. InBeat was designed wi
 
 ### Installation
 
-You can use InBeat services as a set of independent modules. Each module provides REST API as a self-reliant http service running on a specific port. All setting can be changed either in global config file (./inbeat/config.js) or in specific config file for each module (./inbeat/{module}/config.js).
+You can use InBeat services as a set of independent modules. Each module provides REST API as a self-reliant http service running on a specific port. All settings can be changed either in the global config file (./inbeat/config.js) or in a specific config file for each module (./inbeat/{module}/config.js).
 
 Go to the 'inbeat' directory and run installation of nodejs dependencies:
 
@@ -63,11 +63,11 @@ Open in your browser:
 * http://localhost:8080/admin - simple administration console and examples
 
 ## Examples
-All examples can be tested using the minimalistic admin web interafce that is build on top of RESTful APIs.
+All examples can be tested using the minimalistic admin web interafce that is built on top of RESTful APIs.
 
 ### Accounts
 
-InBeat supports a usage of accounts. Each account is represented by its identifier (string), status ("verified" for active account), sessionization (number of minutes that specifies length of gap between two interactions to start a new session) and credentials for authentication (HTTP Basic format username:password).
+InBeat supports the usage of accounts. Each account is represented by its identifier (string), status ("verified" for active account), sessionization (number of minutes that specifies length of gap between two interactions to start a new session) and credentials for authentication (HTTP Basic format username:password).
 
 Create verified account with identifier _INBEAT-TEST_, username and password _INBEAT-TEST:INBEAT-TEST_. Admin credentials are configured in (./inbeat/config.js).
 
@@ -85,7 +85,7 @@ curl --user "admin:admin" -X PUT --header "Content-Type: application/json" http:
 
 ### Aggregation Rules
 
-Aggregation rules cause increase or decrease of final interest for object that the user interacted with. Aggregation Rules are specific setting valid per account. They have to be created for each account.
+Aggregation rules cause increase or decrease of final interest for object that the user interacted with. Aggregation Rules are  a specific setting valid per account. They have to be created for each account.
 
 E.g. if user provides interaction that represents "like", interest is increased. For all other interactions interest is decreased.
 
@@ -141,7 +141,7 @@ curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application
 
 ### Events
 
-Events that are used as a representation of interaction with objects. Each event is used as an interest clue according to a predefined set of aggregation rules.
+Events  are used as a representation of interactions with objects. Each event is used as an interest clue according to a predefined set of aggregation rules.
 
 E.g. user (identified by _http://example.com/users/user1_) likes first object (identified by _http://example.com/objects/object1_) and dislikes second object (identified by _http://example.com/objects/object2_). First object is about _televisions_ (_Television_) and the second is about _food_ (_Onion_).
 
@@ -277,7 +277,7 @@ A set of generated rules can be uploaded to the Recommender System module.
 curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@rules.json "http://localhost:8080/rs/api/INBEAT-TEST/rules?uid=http://example.com/users/user1"
 ```
 
-The same set of objects used for learning of interest can be used for classification. However, it might be used usually only for for validation. New additional objects can be created, including descriptions:
+The same set of objects used for learning of interest can be used for classification, which may be useful  for validation purposes. New additional objects can be created, including descriptions:
 
 ```bash
 # Create new objects
@@ -306,7 +306,7 @@ curl --user "INBEAT-TEST:INBEAT-TEST" -X POST --header "Content-Type: applicatio
 ]'
 ```
 
-Objects are classified using rule engine. Output is a rank that represents user interest for specific object.
+Objects are classified using a rule engine. Output is a rank that represents user interest for a specific object.
 
 ```bash
 # Classify

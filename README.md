@@ -43,7 +43,9 @@ We provide a set of installation scripts to build a complete image with InBeat s
 ### Prerequisites
 
 - [VirtualBox](https://www.virtualbox.org/)
+  * tested with virtual box 4.3.2.8
 - [Vagrant](https://www.vagrantup.com/)
+- * tested with vagrant  1.7.2
   * Plugins
     * vagrant plugin install vagrant-vbguest
     * vagrant plugin install vagrant-omnibus
@@ -51,6 +53,15 @@ We provide a set of installation scripts to build a complete image with InBeat s
 ### Vagrant
 
 ```bash
+# install virtualbox and vagrant 
+# if this does not proceed correctly, install latest version from virtualbox.org and vagrantup.com
+sudo apt-get install virtualbox vagrant
+# create local copy of inbeat git repository
+git clone https://github.com/KIZI/InBeat.git
+cd InBeat
+# install plugins
+vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-omnibus
 # start virtual server and install all dependencies
 vagrant up
 # login to vagrant virtual server

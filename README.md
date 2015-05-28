@@ -45,7 +45,7 @@ We provide a set of installation scripts to build a complete image with InBeat s
 - [VirtualBox](https://www.virtualbox.org/)
   * tested with virtual box 4.3.2.8
 - [Vagrant](https://www.vagrantup.com/)
-- * tested with vagrant  1.7.2
+  * tested with vagrant  1.7.2
   * Plugins
     * vagrant plugin install vagrant-vbguest
     * vagrant plugin install vagrant-omnibus

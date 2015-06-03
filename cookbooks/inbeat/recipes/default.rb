@@ -107,6 +107,8 @@ bash "InBeat start PM2" do
   cwd "#{node['inbeat']['root']}"
   code <<-EOH
   sudo NODE_ENV=development pm2 start processes.json
+  sudo NODE_ENV=development pm2 save
+  sudo NODE_ENV=development pm2 startup
   EOH
 end
 

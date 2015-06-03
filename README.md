@@ -64,14 +64,14 @@ vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-omnibus
 # start virtual server and install all dependencies
 vagrant up
-# login to vagrant virtual server
-vagrant ssh
+# login to vagrant virtual server - optional
+# vagrant ssh
 ```
 
 Open in your browser:
 
-* http://localhost:8080/ - web interface + documentation
-* http://localhost:8080/admin - simple administration console and examples
+* [http://localhost:8880/](http://localhost:8880/) - web interface + documentation
+* [http://localhost:8880/admin](http://localhost:8880/admin) - simple administration console and examples
 
 ## Examples
 All examples can be tested using the minimalistic admin web interafce that is built on top of RESTful APIs.
@@ -84,7 +84,7 @@ Create verified account with identifier _INBEAT-TEST_, username and password _IN
 
 ```bash
 # Create account in InBeat
-curl --user "admin:admin" -X PUT --header "Content-Type: application/json" http://localhost:8080/gain/api/admin/account --data-binary '[
+curl --user "admin:admin" -X PUT --header "Content-Type: application/json" http://localhost:8880/gain/api/admin/account --data-binary '[
   {
     "id": "INBEAT-TEST",
     "status": "verified",
@@ -102,7 +102,7 @@ E.g. if user provides interaction that represents "like", interest is increased.
 
 ```bash
 # Create aggregation rules
-curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" http://localhost:8080/gain/api/INBEAT-TEST/aggregation/rules --data-binary '{
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" http://localhost:8880/gain/api/INBEAT-TEST/aggregation/rules --data-binary '{
   "body": "if(interaction.attributes.action===\"like\") {aggregation.interest = 1;} else {aggregation.interest = -1;} "
 }'
 ```
@@ -145,7 +145,7 @@ JSON representation:
 
 ```bash
 # Create aggregation taxonomy
-curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" http://localhost:8080/gain/api/INBEAT-TEST/aggregation/taxonomy --data-binary '{
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" http://localhost:8880/gain/api/INBEAT-TEST/aggregation/taxonomy --data-binary '{
   "body": "{\"name\": \"Root\",\"uri\": \"http://example.com/taxonomy/root\",\"children\": [{      \"name\": \"Food\",\"uri\": \"http://example.com/taxonomy/food\"},{\"name\": \"Electronics\",      \"uri\": \"http://example.com/taxonomy/electronics\",\"children\": [{\"name\": \"Televisions\", \"uri\": \"http://example.com/taxonomy/televisions\"},{\"name\": \"Radios\", \"uri\": \"http://example.com/taxonomy/radios\"}]}]}"
 }'
 ```
@@ -158,7 +158,7 @@ E.g. user (identified by _http://example.com/users/user1_) likes first object (i
 
 ```bash
 # Send events
-curl -X POST --header "Content-Type: application/json" http://localhost:8080/gain/listener --data-binary '{
+curl -X POST --header "Content-Type: application/json" http://localhost:8880/gain/listener --data-binary '{
   "accountId": "INBEAT-TEST",
   "type": "event",
   "attributes":{
@@ -175,7 +175,7 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8080/gai
   }
 }'
 
-curl -X POST --header "Content-Type: application/json" http://localhost:8080/gain/listener --data-binary '{
+curl -X POST --header "Content-Type: application/json" http://localhost:8880/gain/listener --data-binary '{
   "accountId": "INBEAT-TEST",
   "type": "event",
   "attributes":{
@@ -199,7 +199,7 @@ InBeat GAIN module provides an export of aggregated data. It contains informatio
 
 ```bash
 # Get export
-curl --user "INBEAT-TEST:INBEAT-TEST" "http://localhost:8080/gain/api/INBEAT-TEST/export/interests?uid=http://example.com/users/user1" > export.json
+curl --user "INBEAT-TEST:INBEAT-TEST" "http://localhost:8880/gain/api/INBEAT-TEST/export/interests?uid=http://example.com/users/user1" > export.json
 ```
 
 Example of output:
@@ -236,14 +236,14 @@ The export can be uploaded to the Preference Learning module in order to use thi
 
 ```bash
 # Upload to PL
-curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@export.json "http://localhost:8080/pl/api/INBEAT-TEST/data?uid=http://example.com/users/user1"
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@export.json "http://localhost:8880/pl/api/INBEAT-TEST/data?uid=http://example.com/users/user1"
 ```
 
 Rule mining can be initiated with a set of parameters: type (jsapriori|arules|lm) , support and confidence.
 
 ```bash
 # Get rules
-curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" "http://localhost:8080/pl/api/INBEAT-TEST/rules?uid=http://example.com/users/user1" --data-binary '{
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" "http://localhost:8880/pl/api/INBEAT-TEST/rules?uid=http://example.com/users/user1" --data-binary '{
   "type": "jsapriori",
   "support": 0.01,
   "confidence": 0.01
@@ -285,14 +285,14 @@ A set of generated rules can be uploaded to the Recommender System module.
 
 ```bash
 # Upload rules RS
-curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@rules.json "http://localhost:8080/rs/api/INBEAT-TEST/rules?uid=http://example.com/users/user1"
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@rules.json "http://localhost:8880/rs/api/INBEAT-TEST/rules?uid=http://example.com/users/user1"
 ```
 
 The same set of objects used for learning of interest can be used for classification, which may be useful  for validation purposes. New additional objects can be created, including descriptions:
 
 ```bash
 # Create new objects
-curl --user "INBEAT-TEST:INBEAT-TEST" -X POST --header "Content-Type: application/json" "http://localhost:8080/gain/api/INBEAT-TEST/object/attributes" --data-binary '
+curl --user "INBEAT-TEST:INBEAT-TEST" -X POST --header "Content-Type: application/json" "http://localhost:8880/gain/api/INBEAT-TEST/object/attributes" --data-binary '
 [
     {
         "accountId": "INBEAT-TEST",
@@ -321,11 +321,11 @@ Objects are classified using a rule engine. Output is a rank that represents use
 
 ```bash
 # Classify
-curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8080/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object3"
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8880/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object3"
 
-curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8080/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object4"
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8880/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object4"
 
-curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8080/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1"
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8880/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1"
 ```
 
 Example of output for the third object (about _Food_, _Garlic_). Since user does not like objects about _Food_(_Onion_), the third objects is ranked as _negative_:

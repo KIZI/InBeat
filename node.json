@@ -1,0 +1,8 @@
+{
+	"inbeat" : {
+		"root": "/var/www/inbeat"
+	},
+	"run_list": [
+		"recipe[inbeat::default]"
+	]
+}

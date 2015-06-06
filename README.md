@@ -6,39 +6,15 @@ Interest Beat is a service for recommendation of content. InBeat was designed wi
 
 - [InBeat](http://www.inbeat.eu)
 
-## Installation - manual installation
+## Documentation and tutorials
 
-### Prerequisites
+- [Documentation](./doc/main.md)
 
-- [MongoDB](https://www.mongodb.org/)
-- [Node.js](https://nodejs.org/) + npm
-- [R](http://cran.r-project.org/)
-- R packages - arules, pmml, XML
-  * install.packages(c("arules","pmml","XML"),dependencies=TRUE, repos="http://mirrors.nic.cz/R/")
-- Optional
-  * proxy - [NGINX](http://nginx.org/), ...
-  * monitoring service - [PM2](https://github.com/Unitech/pm2), ...
+## Local and development installation
 
-### Installation
+We provide a set of installation scripts to build a complete image with InBeat services. The following tutorial provides local installation for testing and development purposes. 
 
-You can use InBeat services as a set of independent modules. Each module provides REST API as a self-reliant http service running on a specific port. All settings can be changed either in the global config file (./inbeat/config.js) or in a specific config file for each module (./inbeat/{module}/config.js).
-
-Go to the 'inbeat' directory and run installation of nodejs dependencies:
-
-```bash
-# change dir
-cd ./inbeat
-# install nodejs dependencies
-./install.sh
-# start services
-./start.sh
-```
-
-Each service runs on a predefined port and you can use REST API as the main communication channel.
-
-## Installation - Chef cookbook (Recommended)
-
-We provide a set of installation scripts to build a complete image with InBeat services. The following tutorial provides local installation for testing and development purposes. For production installation the same set of scripts can be used for [Chef](https://www.chef.io/) (./cookbooks folder).
+Other installation possibilities are described in the [documentation](./doc/main.md).
 
 ### Prerequisites
 

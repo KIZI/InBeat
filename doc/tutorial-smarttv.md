@@ -1,10 +1,4 @@
-# InBeat - tutorial 
-
-## Installation
-
-Follow instrunctions on the [InBeat main description](../README.md)
-
-## Smart TV Use Case 
+# InBeat - Smart TV Use Case 
 
 Let consider the Smart TV use case where the content in semantially enriched. Each fragment of multimedia content is extended about a set of semantic features that describe the fragment. 
 
@@ -61,16 +55,19 @@ action | interest change
 --- | --- 
 play | 0
 skip | -1
-smile| +1
+volumeup | +0.5
+smile | +0.5
 
 The set of rules is presented by JavaScript code. For the previous example:
 ```javascript
 if(interaction.attributes.action==="play") {
-	aggregation.interest = 1;
+	aggregation.interest = 0;
 } else if(interaction.attributes.action==="skip") {
 	aggregation.interest = -1;
+} else if(interaction.attributes.action==="volumeup") {
+	aggregation.interest = +0.5;
 } else if(interaction.attributes.action==="smile") {
-	aggregation.interest = +1;
+  aggregation.interest = +0.5;
 }
 ```
 
@@ -80,7 +77,7 @@ or use the cURL call
 ```bash
 # Create aggregation rules
 curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" http://localhost:8880/gain/api/INBEAT-TUTORIAL/aggregation/rules --data-binary '{
-  "body": "if(interaction.attributes.action===\"play\") {	aggregation.interest = 1;} else if(interaction.attributes.action===\"skip\") {	aggregation.interest = -1;} else if(interaction.attributes.action===\"smile\") {	aggregation.interest = +1;}"
+  "body": "if(interaction.attributes.action===\"play\") {	aggregation.interest = 0;} else if(interaction.attributes.action===\"skip\") {	aggregation.interest = -1;} else if(interaction.attributes.action===\"volumeup\") {	aggregation.interest = +0.5;} else if(interaction.attributes.action===\"smile\") {  aggregation.interest = +0.5;}"
 }'
 ```
 
@@ -135,24 +132,101 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: app
 Let consider there are two advertisment videos: first about Televisions and the second about Food.
 
 
-objectId | d_o_Root | d_o_Food | d_o_Electronics | d_o_Televisions | d_o_Radios| d_r_Television | d_r_Onion
---- | --- | --- | --- | --- | --- | --- | --- 
-http://example.com/objects/object1 | 0 | 0 | 0 | 1 | 0 | 1 | 0
-http://example.com/objects/object2 | 0 | 1 | 0 | 0 | 0 | 0 | 1
+objectId | d_o_Root | d_o_Food | d_o_Electronics | d_o_Televisions | d_o_Radios| d_r_Television | d_r_Onion | d_r_Salt
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+http://example.com/objects/object1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0
+http://example.com/objects/object2 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 1
+
+Those description of objects can be predefined in InBeat using web admin console [http://localhost:8880/admin/#/gain-description](http://localhost:8880/admin/#/gain-description) or REST API call.
+
+
+The description of both objects in JSON is:
+
+```json
+[
+    {
+      "accountId": "INBEAT-TUTORIAL",
+      "objectId":"http://example.com/objects/object1",
+      "entities":[{
+        "lod":"http://dbpedia.org/resource/Television",
+        "type":"http://example.com/taxonomy/televisions"
+      }]
+    },
+    {
+      "accountId": "INBEAT-TUTORIAL",
+      "objectId":"http://example.com/objects/object2",
+      "entities":[{
+        "lod":"http://dbpedia.org/resource/Onion",
+        "type":"http://example.com/taxonomy/food"
+      },{
+        "lod":"http://dbpedia.org/resource/Salt",
+        "type":"http://example.com/taxonomy/food"
+      }]
+    }
+]
+```
+
+Description of object can be part of each interaction too. See the next section of this tutorial for more details.
+
+Example of REST API call:
+
+```bash
+# Get rules
+curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X POST --header "Content-Type: application/json" "http://localhost:8880/gain/api/INBEAT-TUTORIAL/object/attributes" --data-binary '[
+    {
+      "accountId": "INBEAT-TUTORIAL",
+      "objectId":"http://example.com/objects/object1",
+      "entities":[{
+        "lod":"http://dbpedia.org/resource/Television",
+        "type":"http://example.com/taxonomy/televisions"
+      }]
+    },
+    {
+      "accountId": "INBEAT-TUTORIAL",
+      "objectId":"http://example.com/objects/object2",
+      "entities":[{
+        "lod":"http://dbpedia.org/resource/Onion",
+        "type":"http://example.com/taxonomy/food"
+      },{
+        "lod":"http://dbpedia.org/resource/Salt",
+        "type":"http://example.com/taxonomy/food"
+      }]
+    }
+]'
+```
 
 ### Actions
 
-The tutorial user (identified by http://example.com/users/user1) provides two actions during the session in front of TV. During the first advertisment he smiled (detected by Microsoft Kinect) and the second advertisement he skipped using the remote control button. 
+The tutorial user (identified by http://example.com/users/user1) provides three actions during the session in front of TV. During the first advertisment he smiled (detected by Microsoft Kinect) and increased volume. The second advertisement he skipped using the remote control button. 
 
 
-The first action is in JSON format represented as follows:
+The first and second action is in JSON format represented as follows:
 
 ```json
 {
   "accountId": "INBEAT-TUTORIAL",
   "type": "event",
   "attributes":{
-    "action":"like"
+    "action":"smile"
+  },
+  "userId": "http://example.com/users/user1",
+  "objectId": "http://example.com/objects/object1",
+  "object":{
+    "objectId":"http://example.com/objects/object1",
+    "entities":[{
+      "lod":"http://dbpedia.org/resource/Television",
+      "type":"http://example.com/taxonomy/televisions"
+    }]
+  }
+}
+```
+
+```json
+{
+  "accountId": "INBEAT-TUTORIAL",
+  "type": "event",
+  "attributes":{
+    "action":"volumeup"
   },
   "userId": "http://example.com/users/user1",
   "objectId": "http://example.com/objects/object1",
@@ -167,22 +241,25 @@ The first action is in JSON format represented as follows:
 ```
 
 
-The second action is in JSON format represented as follows:
+The third action is in JSON format represented as follows:
 
 ```json
 {
   "accountId": "INBEAT-TUTORIAL",
   "type": "event",
   "attributes":{
-    "action":"like"
+    "action":"skip"
   },
   "userId": "http://example.com/users/user1",
-  "objectId": "http://example.com/objects/object1",
+  "objectId": "http://example.com/objects/object2",
   "object":{
-    "objectId":"http://example.com/objects/object1",
+    "objectId":"http://example.com/objects/object2",
     "entities":[{
-      "lod":"http://dbpedia.org/resource/Television",
-      "type":"http://example.com/taxonomy/televisions"
+      "lod":"http://dbpedia.org/resource/Onion",
+      "type":"http://example.com/taxonomy/food"
+    },{
+      "lod":"http://dbpedia.org/resource/Salt",
+      "type":"http://example.com/taxonomy/food"
     }]
   }
 }
@@ -196,7 +273,7 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8880/gai
   "accountId": "INBEAT-TUTORIAL",
   "type": "event",
   "attributes":{
-    "action":"like"
+    "action":"smile"
   },
   "userId": "http://example.com/users/user1",
   "objectId": "http://example.com/objects/object1",
@@ -213,7 +290,24 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8880/gai
   "accountId": "INBEAT-TUTORIAL",
   "type": "event",
   "attributes":{
-    "action":"dislike"
+    "action":"volumeup"
+  },
+  "userId": "http://example.com/users/user1",
+  "objectId": "http://example.com/objects/object1",
+  "object":{
+    "objectId":"http://example.com/objects/object1",
+    "entities":[{
+      "lod":"http://dbpedia.org/resource/Television",
+      "type":"http://example.com/taxonomy/televisions"
+    }]
+  }
+}'
+
+curl -X POST --header "Content-Type: application/json" http://localhost:8880/gain/listener --data-binary '{
+  "accountId": "INBEAT-TUTORIAL",
+  "type": "event",
+  "attributes":{
+    "action":"skip"
   },
   "userId": "http://example.com/users/user1",
   "objectId": "http://example.com/objects/object2",
@@ -222,10 +316,20 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8880/gai
     "entities":[{
       "lod":"http://dbpedia.org/resource/Onion",
       "type":"http://example.com/taxonomy/food"
+    },{
+      "lod":"http://dbpedia.org/resource/Salt",
+      "type":"http://example.com/taxonomy/food"
     }]
   }
 }'
 ```
+
+objectId | d_o_Root | d_o_Food | d_o_Electronics | d_o_Televisions | d_o_Radios| d_r_Television | d_r_Onion | d_r_Salt | Action
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+http://example.com/objects/object1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | smile
+http://example.com/objects/object1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | volumeup
+http://example.com/objects/object2 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 1 | skip
+
 
 ### Export of aggregated interests
 
@@ -260,18 +364,20 @@ Example of output in JSON:
   "d_o_Root": 1,
   "d_o_Food": 1,
   "d_r_Onion": 1,
+  "d_r_Salt": 1,
   "last": "1427725951539"
 }]
 ```
 
 The tabular represrntation is following:
 
-accountId | objectId | aprentObjectId | sessionId | d_o_Root | d_o_Food | d_o_Electronics | d_o_Televisions | d_o_Radios| d_r_Television | d_r_Onion | interest
+accountId | objectId | aprentObjectId | sessionId | d_o_Root | d_o_Food | d_o_Electronics | d_o_Televisions | d_o_Radios| d_r_Television | d_r_Onion | d_r_Salt | interest
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- 
-INBEAT-TUTORIAL | http://example.com/objects/object1 | | 1427725950907 | *1* | 0 | *1* | 1 | 0 | 1 | 0 | *1*
-INBEAT-TUTORIAL | http://example.com/objects/object2 | | 1427725950907 | *1* | 1 | 0 | 0 | 0 | 0 | 1 | *-1*
+INBEAT-TUTORIAL | http://example.com/objects/object1 | | 1427725950907 | **1** | 0 | **1** | 1 | 0 | 1 | 0 | 0 | **1**
+INBEAT-TUTORIAL | http://example.com/objects/object2 | | 1427725950907 | **1** | 1 | 0 | 0 | 0 | 0 | 1 | 1 | **-1**
 
 Final value of interest is computed and output of taxonomy propagation is provided. 
+For the first object user provided two interaction, both of them increased total interest by +0.5. The final value is +1.
 
 
 ### Preference learning
@@ -333,10 +439,41 @@ Example of output:
 ]
 ```
 
+All mined rules, sorted according to CBA (decreasingly by confidence, support, rule length):
+
 rule | support | confidence
 --- | --- | ---
-{d_o_Food=1} => {interest=negative} | 0.5 | 1
 {d_o_Electronics=1} => {interest=positive} | 0.5 | 1
+{d_o_Televisions=1} => {interest=positive} | 0.5 | 1 
+{d_r_Onion=1} => {interest=negative} | 0.5 | 1
+{d_r_Salt=1} => {interest=negative} | 0.5 | 1
+{d_r_Television=1} => {interest=positive} | 0.5 | 1
+{d_o_Food=1} => {interest=negative} | 0.5 | 1
+{d_o_Electronics=1,d_o_Root=1} => {interest=positive} | 0.5 | 1
+{d_o_Electronics=1,d_o_Televisions=1} => {interest=positive} | 0.5 | 1
+{d_o_Electronics=1,d_r_Television=1} => {interest=positive} | 0.5 | 1
+{d_o_Food=1,d_o_Root=1} => {interest=negative} | 0.5 | 1
+{d_o_Food=1,d_r_Onion=1} => {interest=negative} | 0.5 | 1
+{d_o_Food=1,d_r_Salt=1} => {interest=negative} | 0.5 | 1
+{d_o_Root=1,d_o_Televisions=1} => {interest=positive} | 0.5 | 1
+{d_o_Root=1,d_r_Onion=1} => {interest=negative} | 0.5 | 1
+{d_o_Root=1,d_r_Salt=1} => {interest=negative} | 0.5 | 1
+{d_o_Root=1,d_r_Television=1} => {interest=positive} | 0.5 | 1
+{d_o_Televisions=1,d_r_Television=1} => {interest=positive} | 0.5 | 1
+{d_r_Onion=1,d_r_Salt=1} => {interest=negative} | 0.5 | 1
+{d_o_Root=1,d_r_Onion=1,d_r_Salt=1} => {interest=negative} | 0.5 | 1
+{d_o_Electronics=1,d_o_Root=1,d_o_Televisions=1} => {interest=positive} | 0.5 | 1
+{d_o_Electronics=1,d_o_Root=1,d_r_Television=1} => {interest=positive} | 0.5 | 1
+{d_o_Electronics=1,d_o_Televisions=1,d_r_Television=1} => {interest=positive} | 0.5 | 1
+{d_o_Food=1,d_o_Root=1,d_r_Onion=1} => {interest=negative} | 0.5 | 1
+{d_o_Food=1,d_o_Root=1,d_r_Salt=1} => {interest=negative} | 0.5 | 1
+{d_o_Food=1,d_r_Onion=1,d_r_Salt=1} => {interest=negative} | 0.5 | 1
+{d_o_Root=1,d_o_Televisions=1,d_r_Television=1} => {interest=positive} | 0.5 | 1
+{d_o_Food=1,d_o_Root=1,d_r_Onion=1,d_r_Salt=1} => {interest=negative} | 0.5 | 1
+{d_o_Electronics=1,d_o_Root=1,d_o_Televisions=1,d_r_Television=1} => {interest=positive} | 0.5 | 1
+{d_o_Root=1} => {interest=positive} | 0.5 | 0.5 
+{d_o_Root=1} => {interest=negative} | 0.5 | 0.5 
+
 
 ### New objects for classification
 
@@ -431,9 +568,13 @@ The output:
 [{"objectId":"http://example.com/objects/object4","rank":"positive"}]
 ```
 
-
 objectId | rank
 --- | --- 
 http://example.com/objects/object3 | negative
 http://example.com/objects/object4 | positive
+
+
+For the third object (about _Food_, _Garlic_). Since user skipped object about _Food_(_Onion_), the third objects is ranked as _negative_. Rule _{d_o_Food=1} => {interest=negative}_ is used for classification.
+
+For the fourth object (about _Radios_, _Radio_). Since user smiled during the advertisment about _Televisions_(_Television_) and both _Televisions_ and _Radios_ are subgroups of _Electronics_, the fourth objects is ranked as _positive_. Rule _{d_o_Electronics=1} => {interest=positive}_ is used for classifiaction.
 

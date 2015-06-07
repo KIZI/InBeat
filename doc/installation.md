@@ -36,8 +36,21 @@ vagrant up
 
 For production installation the same set of scripts can be used for [Chef](https://www.chef.io/) (./cookbooks folder).
 
-* Copy InBeat to /var/www/inbeat on your server
+* Copy InBeat to /var/www/ on your server (or edit solo.rb and node.json file)
 * Use Chef cookbooks to install all services and dependencies
+
+```bash
+# install Chef
+sudo curl -L https://www.opscode.com/chef/install.sh | sudo bash
+
+# install InBeat
+sudo mkdir /var/www/
+cd /var/www/
+sudo git clone https://github.com/KIZI/InBeat.git
+cd InBeat
+sudo chef-solo -c ./solo.rb
+```
+
 
 ## Manual installation
 
@@ -54,7 +67,7 @@ For production installation the same set of scripts can be used for [Chef](https
 
 ### Installation
 
-All settings can be changed either in the global config file (./inbeat/config.js) or in a specific config file for each module (./inbeat/{module}/config.js).
+ou can use InBeat services as a set of independent modules. Each module provides REST API as a self-reliant http service running on a specific port. All settings can be changed either in the global config file (./inbeat/config.js) or in a specific config file for each module (./inbeat/{module}/config.js).
 
 Go to the 'inbeat' directory and run installation of nodejs dependencies:
 

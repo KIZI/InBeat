@@ -22,8 +22,9 @@ bash "nodejs" do
 	user "root"
 	code <<-EOH
 	curl -sL https://deb.nodesource.com/setup | sudo bash -
-	apt-get install -y nodejs npm
-  ln -s /usr/bin/nodejs /usr/bin/node
+	apt-get install -y nodejs
+  apt-get install -y npm || true
+  ln -sf /usr/bin/nodejs /usr/bin/node
 	EOH
   not_if { File.exist?("/usr/bin/node") }
 end
@@ -81,8 +82,6 @@ package "libcurl4-gnutls-dev"
 
 template "/tmp/install.R" do
   source "install.erb"
-  owner "vagrant"
-  group "vagrant"
 end
 
 bash "r-packages" do

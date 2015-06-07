@@ -9,6 +9,7 @@
 ## Tutorials
 
 * [Smart TV Use Case](./tutorial-smarttv.md)
+* [External RS](./tutorial-external.md)
 
 ## Settings
 

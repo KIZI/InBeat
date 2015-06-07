@@ -37,7 +37,7 @@ PUT /pl/api/{accountId}/data?uid={userId}
 "objectId": "2",
 "parentObjectId": "1",
 "interest": 0,
-"d_o_thing": 0
+"type_thing": 0
 }]
 < 201
 < Content-Type: text/plain

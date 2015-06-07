@@ -145,8 +145,8 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8880/gai
   "object":{
     "objectId":"http://example.com/objects/object1",
     "entities":[{
-      "lod":"http://dbpedia.org/resource/Television",
-      "type":"http://example.com/taxonomy/televisions"
+      "entityURI":"http://dbpedia.org/resource/Television",
+      "typeURI":"http://example.com/taxonomy/televisions"
     }]
   }
 }'
@@ -162,8 +162,8 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8880/gai
   "object":{
     "objectId":"http://example.com/objects/object2",
     "entities":[{
-      "lod":"http://dbpedia.org/resource/Onion",
-      "type":"http://example.com/taxonomy/food"
+      "entityURI":"http://dbpedia.org/resource/Onion",
+      "typeURI":"http://example.com/taxonomy/food"
     }]
   }
 }'
@@ -187,10 +187,10 @@ Example of output:
   "sessionId": "1427725950907",
   "userId": "http://example.com/users/user1",
   "interest": 1,
-  "d_o_Root": 1,
-  "d_o_Electronics": 1,
-  "d_o_Televisions": 1,
-  "d_r_Television": 1,
+  "type_Root": 1,
+  "type_Electronics": 1,
+  "type_Televisions": 1,
+  "entity_Television": 1,
   "last": "1427725950959"
 }, {
   "accountId": "INBEAT-TEST",
@@ -199,9 +199,9 @@ Example of output:
   "sessionId": "1427725950907",
   "userId": "http://example.com/users/user1",
   "interest": -1,
-  "d_o_Root": 1,
-  "d_o_Food": 1,
-  "d_r_Onion": 1,
+  "type_Root": 1,
+  "type_Food": 1,
+  "entity_Onion": 1,
   "last": "1427725951539"
 }]
 ```
@@ -231,25 +231,25 @@ Example of output:
 [
 {}, {
   "antecedent": {
-    "d_o_Food": "1"
+    "type_Food": "1"
   },
   "consequent": {
     "interest": "negative"
   },
   "support": 0.5,
   "confidence": 1,
-  "text": "{d_o_Food=1} => {interest=negative}"
+  "text": "{type_Food=1} => {interest=negative}"
 },
 , {
   "antecedent": {
-    "d_o_Electronics": "1"
+    "type_Electronics": "1"
   },
   "consequent": {
     "interest": "positive"
   },
   "support": 0.5,
   "confidence": 1,
-  "text": "{d_o_Electronics=1} => {interest=positive}"
+  "text": "{type_Electronics=1} => {interest=positive}"
 },
 {}
 ]
@@ -275,8 +275,8 @@ curl --user "INBEAT-TEST:INBEAT-TEST" -X POST --header "Content-Type: applicatio
         "objectId": "http://example.com/objects/object3",
         "entities": [
             {
-                "type": "http://example.com/taxonomy/food",
-                "lod": "http://dbpedia.org/resource/Garlic"
+                "typeURI": "http://example.com/taxonomy/food",
+                "entityURI": "http://dbpedia.org/resource/Garlic"
             }
         ]
     },
@@ -285,8 +285,8 @@ curl --user "INBEAT-TEST:INBEAT-TEST" -X POST --header "Content-Type: applicatio
         "objectId": "http://example.com/objects/object4",
         "entities": [
             {
-                "type": "http://example.com/taxonomy/radios",
-                "lod": "http://dbpedia.org/resource/Radio"
+                "typeURI": "http://example.com/taxonomy/radios",
+                "entityURI": "http://dbpedia.org/resource/Radio"
             }
         ]
     }

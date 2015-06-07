@@ -178,8 +178,8 @@ GET /gain/api/{accountId}/object/attributes?id={objectId}
 "entities": [
 {
 "source": "thd",
-"lod": "http://dbpedia.org/resource/North",
-"type": "http://dbpedia.org/resource/Noun",
+"entityURI": "http://dbpedia.org/resource/North",
+"typeURI": "http://dbpedia.org/resource/Noun",
 "label": "Noun",
 "confidence": "0.85",
 "relevance": 0
@@ -200,8 +200,8 @@ POST /gain/api/{accountId}/object/attributes
 "entities": [
 {
 "source": "thd",
-"lod": "http://dbpedia.org/resource/North",
-"type": "http://dbpedia.org/resource/Noun",
+"entityURI": "http://dbpedia.org/resource/North",
+"typeURI": "http://dbpedia.org/resource/Noun",
 "label": "Noun",
 "confidence": "0.85",
 "relevance": 0

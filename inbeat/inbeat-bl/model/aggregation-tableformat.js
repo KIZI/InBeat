@@ -147,9 +147,32 @@ var AggregationTableFormat = function () {
     };
 
     var _find = function(accountId, userId, callback){
-        _model.find({'accountId':accountId, 'userId':userId},{"_id": 0}).sort({
-            sessionId: -1
-        }).exec(callback);
+        if(userId) {
+           _model.find({'accountId':accountId, 'userId':userId},{"_id": 0}).sort({
+                sessionId: -1
+            }).exec(callback);
+        } else {
+           _model.find({'accountId':accountId},{"_id": 0}).sort({
+                sessionId: -1
+            }).exec(callback);
+        }
+        // _model.find({'accountId':accountId, 'userId':userId},{"_id": 0},callback);
+    };
+
+    var _findWithProjection = function(accountId, userId, projectionFilter, callback){
+        projection = {"_id": 0};
+        for(var p in projectionFilter){
+            projection[projectionFilter[p]] = 1;
+        }
+        if(userId) {
+           _model.find({'accountId':accountId, 'userId':userId}, projection).sort({
+                sessionId: -1
+            }).exec(callback);
+        } else {
+           _model.find({'accountId':accountId}, projection).sort({
+                sessionId: -1
+            }).exec(callback);
+        }
         // _model.find({'accountId':accountId, 'userId':userId},{"_id": 0},callback);
     };
 
@@ -162,6 +185,7 @@ var AggregationTableFormat = function () {
         upsert: _upsert,
         construct: _construct,
         find: _find,
+        findWithProjection: _findWithProjection,
         remove: _remove
     };
 

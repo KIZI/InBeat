@@ -36,6 +36,8 @@ vagrant up
 
 For production installation the same set of scripts can be used for [Chef](https://www.chef.io/) (./cookbooks folder).
 
+* Tested with Ubuntu 14.04.2 (64bit)
+	* curl + git-core package installed
 * Copy InBeat to /var/www/ on your server (or edit solo.rb and node.json file)
 * Use Chef cookbooks to install all services and dependencies
 

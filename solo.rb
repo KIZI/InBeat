@@ -1,3 +1,3 @@
 file_cache_path "/tmp"
-cookbook_path "/var/www/inbeat/cookbooks"
-json_attribs "/var/www/inbeat/node.json"
+cookbook_path "/var/www/InBeat/cookbooks"
+json_attribs "/var/www/InBeat/node.json"

@@ -122,7 +122,7 @@ Use the web admin console [http://localhost:8880/admin/#/gain-aggregation-taxono
 
 ```bash
 # Create aggregation taxonomy
-curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" http://localhost:8880/gain/api/INBEAT-TUTORIAL/aggregation/taxonomy --data-binary '{
+curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" http://localhost:8880/gain/api/INBEAT-TEST/aggregation/taxonomy --data-binary '{
   "body": "{\"name\": \"Root\",\"uri\": \"http://example.com/taxonomy/root\",\"children\": [{      \"name\": \"Food\",\"uri\": \"http://example.com/taxonomy/food\"},{\"name\": \"Electronics\",      \"uri\": \"http://example.com/taxonomy/electronics\",\"children\": [{\"name\": \"Televisions\", \"uri\": \"http://example.com/taxonomy/televisions\"},{\"name\": \"Radios\", \"uri\": \"http://example.com/taxonomy/radios\"}]}]}"
 }'
 ```
@@ -337,7 +337,7 @@ Use the web admin console [http://localhost:8880/admin/#/gain-export](http://loc
 
 ```bash
 # Get export
-curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" "http://localhost:8880/gain/api/INBEAT-TUTORIAL/export/interests?uid=http://example.com/users/user1" > export.json
+curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" "http://localhost:8880/gain/api/INBEAT-TEST/export/interests?uid=http://example.com/users/user1" > export.json
 ```
 
 Example of output in JSON:
@@ -371,7 +371,7 @@ Example of output in JSON:
 
 The tabular represrntation is following:
 
-accountId | objectId | parentObjectId | sessionId | type_Root | type_Food | type_Electronics | type_Televisions | type_Radios| entity_Television | entity_Onion | entity_Salt | interest
+accountId | objectId | aprentObjectId | sessionId | type_Root | type_Food | type_Electronics | type_Televisions | type_Radios| entity_Television | entity_Onion | entity_Salt | interest
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- 
 INBEAT-TUTORIAL | http://example.com/objects/object1 | | 1427725950907 | **1** | 0 | **1** | 1 | 0 | 1 | 0 | 0 | **1**
 INBEAT-TUTORIAL | http://example.com/objects/object2 | | 1427725950907 | **1** | 1 | 0 | 0 | 0 | 0 | 1 | 1 | **-1**
@@ -388,7 +388,7 @@ or
 
 ```bash
 # Upload to PL
-curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" -d@export.json "http://localhost:8880/pl/api/INBEAT-TUTORIAL/data?uid=http://example.com/users/user1"
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@export.json "http://localhost:8880/pl/api/INBEAT-TEST/data?uid=http://example.com/users/user1"
 ```
 
 Rule mining can be initiated with a set of parameters: type (jsapriori|arules|lm) , support and confidence.
@@ -403,7 +403,7 @@ Rule mining can be initiated with a set of parameters: type (jsapriori|arules|lm
 
 ```bash
 # Get rules
-curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" "http://localhost:8880/pl/api/INBEAT-TUTORIAL/rules?uid=http://example.com/users/user1" --data-binary '{
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" "http://localhost:8880/pl/api/INBEAT-TEST/rules?uid=http://example.com/users/user1" --data-binary '{
   "type": "jsapriori",
   "support": 0.01,
   "confidence": 0.01
@@ -489,7 +489,7 @@ using:
 ```json
 [
     {
-        "accountId": "INBEAT-TUTORIAL",
+        "accountId": "INBEAT-TEST",
         "objectId": "http://example.com/objects/object3",
         "entities": [
             {
@@ -499,7 +499,7 @@ using:
         ]
     },
     {
-        "accountId": "INBEAT-TUTORIAL",
+        "accountId": "INBEAT-TEST",
         "objectId": "http://example.com/objects/object4",
         "entities": [
             {
@@ -515,10 +515,10 @@ or
 
 ```bash
 # Create new objects
-curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X POST --header "Content-Type: application/json" "http://localhost:8880/gain/api/INBEAT-TUTORIAL/object/attributes" --data-binary '
+curl --user "INBEAT-TEST:INBEAT-TEST" -X POST --header "Content-Type: application/json" "http://localhost:8880/gain/api/INBEAT-TEST/object/attributes" --data-binary '
 [
     {
-        "accountId": "INBEAT-TUTORIAL",
+        "accountId": "INBEAT-TEST",
         "objectId": "http://example.com/objects/object3",
         "entities": [
             {
@@ -528,7 +528,7 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X POST --header "Content-Type: ap
         ]
     },
     {
-        "accountId": "INBEAT-TUTORIAL",
+        "accountId": "INBEAT-TEST",
         "objectId": "http://example.com/objects/object4",
         "entities": [
             {
@@ -549,14 +549,14 @@ or
 
 ```bash
 # Upload rules RS
-curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" -d@rules.json "http://localhost:8880/rs/api/INBEAT-TUTORIAL/rules?uid=http://example.com/users/user1"
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@rules.json "http://localhost:8880/rs/api/INBEAT-TEST/rules?uid=http://example.com/users/user1"
 ```
 
 ```bash
 # Classify
-curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT "http://localhost:8880/rs/api/INBEAT-TUTORIAL/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object3"
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8880/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object3"
 
-curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT "http://localhost:8880/rs/api/INBEAT-TUTORIAL/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object4"
+curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8880/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object4"
 ```
 
 The output:
@@ -570,7 +570,7 @@ The output:
 
 objectId | rank
 --- | --- 
-http://example.com/objects/object3 | ne##gative
+http://example.com/objects/object3 | negative
 http://example.com/objects/object4 | positive
 
 

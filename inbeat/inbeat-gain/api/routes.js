@@ -324,18 +324,25 @@ exports.userSessionInterest = function(req, res) {
 */
 
 exports.userExportInterest = function(req, res) {
-	if (req.params.accountId && req.query.uid) {
-        AggregationTableFormat.find(req.params.accountId, req.query.uid, function(err, interests) {
+	if (req.params.accountId) {
+        var projection = [];
+        if(req.query.filter) {
+            projection = req.query.filter.split(",");
+        }
+        AggregationTableFormat.findWithProjection(req.params.accountId, req.query.uid, projection, function(err, interests) {
+
             interests = JSON.parse(JSON.stringify(interests));
 
             for(var i=0;i<interests.length;i++){
-                if(interests[i].interest>1){
+                if(interests[i].interest && interests[i].interest>1){
                     interests[i].interest = 1;
                 }
-                if(interests[i].interest<-1){
+                if(interests[i].interest && interests[i].interest<-1){
                     interests[i].interest = -1;
                 }
-                interests[i].interest = parseFloat(interests[i].interest);
+                if(interests[i].interest){
+                    interests[i].interest = parseFloat(interests[i].interest);
+                }
             }
 			res.format({
                 'application/json': function() {

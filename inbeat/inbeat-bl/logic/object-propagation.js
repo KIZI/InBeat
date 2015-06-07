@@ -6,8 +6,8 @@ var ValuePropagation = function(){
 		tax = JSON.parse(JSON.stringify(taxonomy));
 		if(entities){
 			for(var i = 0; i<entities.length; i++){
-				if(entities[i] && entities[i].type){
-					_addValue(tax, entities[i].ntype?entities[i].ntype:entities[i].type, entities[i].relevance?entities[i].relevance:1);
+				if(entities[i] && entities[i].typeURI){
+					_addValue(tax, entities[i].typeURI, entities[i].relevance?entities[i].relevance:1);
 				}
 			}
 		}

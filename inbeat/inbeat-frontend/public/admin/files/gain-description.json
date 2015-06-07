@@ -13,8 +13,8 @@
                 "entityType": "named entity",
                 "typeLabel": "Place",
                 "label": "Museum Island",
-                "type": "http://dbpedia.org/ontology/Place",
-                "lod": "http://dbpedia.org/resource/Museum_Island",
+                "typeURI": "http://dbpedia.org/ontology/Place",
+                "entityURI": "http://dbpedia.org/resource/Museum_Island",
                 "source": "thd"
             }
         ]
@@ -33,8 +33,8 @@
                 "entityType": "named entity",
                 "typeLabel": "Place",
                 "label": "Museum Island",
-                "type": "http://dbpedia.org/ontology/Place",
-                "lod": "http://dbpedia.org/resource/Museum_Island",
+                "typeURI": "http://dbpedia.org/ontology/Place",
+                "entityURI": "http://dbpedia.org/resource/Museum_Island",
                 "source": "thd"
             }
         ]

@@ -71,8 +71,8 @@ $title: GAIN Interaction format
         "entities": [
           {
             "source": "thd",
-            "lod": "http://dbpedia.org/resource/Museum_Island",
-            "type": "http://dbpedia.org/ontology/Place",
+            "entityURI": "http://dbpedia.org/resource/Museum_Island",
+            "typeURI": "http://dbpedia.org/ontology/Place",
             "label": "Museum Island",
             "typeLabel": "Place",
             "entityType": "named entity",

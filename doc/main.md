@@ -2,9 +2,9 @@
 
 ## Installation
 
-* [Local and development installation (Virtual Box + Vagrant)](./installation.md)
-* [Production installation (Chef)](./installation.md)
-* [Manual installation](./installation.md)
+* [Local and development installation (Virtual Box + Vagrant)](./installation.md#local-and-development-installation-recommended)
+* [Production installation (Chef)](./installation.md#production-installation)
+* [Manual installation](./installation.md#manual-installation)
 
 ## Tutorials
 

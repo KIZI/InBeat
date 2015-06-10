@@ -53,7 +53,7 @@ INBEAT-TUTORIAL;http://example.com/objects/object2;0;1433667182856;http://exampl
 INBEAT-TUTORIAL;http://example.com/objects/object1;0;1433667182856;http://example.com/users/user1;1;1;0;0;0;1433667191974;1;1;1
 ```
 
-### Example of MySQL
+### Example of MySQL DDL export result
 
 ```sql
 DROP TABLE IF EXISTS `INBEAT-TUTORIAL-http://example.com/users/user1`; 

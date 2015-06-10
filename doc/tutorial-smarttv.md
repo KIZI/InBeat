@@ -4,7 +4,7 @@ This tutorial describes a complex deployment of InBeat on a "SmartTV" use case, 
 
 **_A live demo_** (using simulation buttons instead of real Microsoft Kinect sensor) is available at http://inbeat.eu/demo/base/.
 
-###Synopsis
+###The story
 InBeat is used to process information about behaviour of TV watchers coming from Microsoft Kinect positioned below the television. The user is recommended new multimedia content to see based on the preference model built by InBeat. 
 
 ###Input data

@@ -1,6 +1,25 @@
 # InBeat - News Recommender System
 
-Minimalistic recommender system demonstrated on the news domain. 
+###Scope
+This tutorial describes a basic use case, in which InBeat is used to recommend articles on a news website using  association rules. 
+
+The rules are used to suggest  news items based on location and day time of the user. Example output rule:
+
+rule | support | confidence
+--- | --- | ---
+{location=GER,daytime=evening} => {objectId=http://example.com/objects/object2} | 0,333333333333333 | 1
+
+###Input data
+For each page view, the website sends an event to InBeat giving user id, identifier of the visited news article (i.e. object id in InBeat terminology), user location and daytime. 
+
+
+
+###What this tutorial covers
+- [Data format for user interactions accepted by InBeat ](#interactions-of-users)
+- [Aggregation of interest??](#export-of-aggregated-interests)
+- [Building rule-based user model](#preference-learning)
+- [Initializing the recommender system](#classificationrecommender-system)
+- [Invoking recommendation](#recommendation)
 
 ## Interactions of users
 
@@ -237,7 +256,9 @@ or
 curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" -d@rules.json "http://localhost:8880/rs/api/INBEAT-TUTORIAL/rules?uid=newsrec"
 ```
 
-### Recommendation 1
+### Recommendation
+We give two examples.
+#### Recommendation 1
 
 Let consider user with following attributes: location: USA
 
@@ -265,7 +286,7 @@ Example of output - set of obejctIds :
 
 Only _http://example.com/objects/object1_ is recommended, because only rule _{location=USA} => {objectId=http://example.com/objects/object1}_ match the query.
 
-### Recommendation 1
+#### Recommendation 1
 
 Let consider user with following attributes: daytime: evening, location: USA
 

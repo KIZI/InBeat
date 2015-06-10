@@ -188,7 +188,10 @@ or
 curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" -d@export.json "http://localhost:8880/pl/api/INBEAT-TUTORIAL/data?uid=newsrec"
 ```
 
-Rule mining can be initiated with a set of parameters: type (jsapriori|arules|lm) , support and confidence. ClassName is target class for classification. For this use case: obejctId.
+Rule mining can be initiated with the following set of parameters: type (jsapriori|arules|lm), support and confidence. We will use the built-in jsapriori rule learner.
+Support and confidence are two standard parameters of association rule learning, for explanation refer e.g. to [Wikipedia](http://en.wikipedia.org/wiki/Association_rule_learning#Useful_Concepts).
+
+ClassName is the target class for classification, which will be used for the right hand side of the rules. For this use case: obejctId.
 
 ```json
 {
@@ -210,7 +213,7 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: app
 ```
 
 
-Example of output:
+Example output:
 ```json
 [
     {
@@ -231,7 +234,7 @@ Example of output:
 ]
 ```
 
-All mined rules, sorted according to CBA (decreasingly by confidence, support, rule length):
+Discovered rules are sorted in the descending order according to the following criteria: confidence, support, rule length:
 
 rule | support | confidence
 --- | --- | ---
@@ -260,7 +263,7 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: app
 We give two examples.
 #### Recommendation 1
 
-Let consider user with following attributes: location: USA
+Let us consider  a user with the following attributes: location: USA
 
 ```json
 {
@@ -284,11 +287,11 @@ Example of output - set of obejctIds :
 ]
 ```
 
-Only _http://example.com/objects/object1_ is recommended, because only rule _{location=USA} => {objectId=http://example.com/objects/object1}_ match the query.
+Only _http://example.com/objects/object1_ is recommended, because the left hand side of only one rule _{location=USA} => {objectId=http://example.com/objects/object1}_ matches the user description.
 
-#### Recommendation 1
+#### Recommendation 2
 
-Let consider user with following attributes: daytime: evening, location: USA
+Let  us consider a user with the  following attributes: daytime: evening, location: USA
 
 ```json
 {
@@ -320,7 +323,7 @@ Example of output - set of obejctIds :
     }
 ]
 ```
-Both _http://example.com/objects/object1_ and _http://example.com/objects/object2_ are recommended, because first two rules match the query (_{daytime=evening} => {objectId=http://example.com/objects/object2}_ and _{location=USA} => {objectId=http://example.com/objects/object1}_)
+Both _http://example.com/objects/object1_ and _http://example.com/objects/object2_ are recommended, because the user description is matched by left hand sides of   two rules: (_{daytime=evening} => {objectId=http://example.com/objects/object2}_ and _{location=USA} => {objectId=http://example.com/objects/object1}_)
 
 
 

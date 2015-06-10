@@ -69,7 +69,7 @@ sudo chef-solo -c ./solo.rb
 
 ### Installation
 
-ou can use InBeat services as a set of independent modules. Each module provides REST API as a self-reliant http service running on a specific port. All settings can be changed either in the global config file (./inbeat/config.js) or in a specific config file for each module (./inbeat/{module}/config.js).
+You can use InBeat services as a set of independent modules. Each module provides REST API as a self-reliant http service running on a specific port. All settings can be changed either in the global config file (./inbeat/config.js) or in a specific config file for each module (./inbeat/{module}/config.js).
 
 Go to the 'inbeat' directory and run installation of nodejs dependencies:
 
@@ -81,3 +81,9 @@ cd ./inbeat
 # start services
 ./start.sh
 ```
+
+### Deployment on Amazon EC2 
+InBeat can be in a few steps run on cloud Ubuntu instance.
+
+- Deploy empty Ubuntu 14.04 cloud image to EC2 (https://cloud-images.ubuntu.com/trusty/current/)
+- Install InBeat using the process described in the Production installation instructions above

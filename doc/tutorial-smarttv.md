@@ -26,13 +26,14 @@ User data acquistion
 User model  building and recommendation
 - [Export of aggregated data](#export-of-aggregated-interests)
 - [Building rule-based preference model](#preference-learning)
+- [Description of objects for recommendation](#new-objects-for-classification)
 - [Use of the model to rank new content](#classificationrecommender-system)
 
 
 
 ## Accounts
 
-To create account you can use either REST API call or [http://localhost:8880/admin/#/gain-adminAccount](http://localhost:8880/admin/#/gain-adminAccount)
+To create account you can use either a REST API call or [http://localhost:8880/admin/#/gain-adminAccount](http://localhost:8880/admin/#/gain-adminAccount)
 
 Default admin credentials are (can be changed by manual editting of ./inbeat/config.js configuration file):
 * username: admin
@@ -73,9 +74,9 @@ curl --user "admin:admin" -X PUT --header "Content-Type: application/json" http:
 ```
 
 
-### Agregation Rules
+### Aggregation Rules
 
-The remotet control and Microsoft Kinect sensor can send various actions and each action can represent different level of user interest. We can set for each action rule which increases or decreases overall interest of the item.
+The remote control and Microsoft Kinect sensor can send various actions. Each action can represent a  different level of user interest. Let's setup for each action a  rule which increases or decreases overall interest of the item.
 
 action | interest change
 --- | --- 
@@ -84,7 +85,7 @@ skip | -1
 volumeup | +0.5
 smile | +0.5
 
-The set of rules is presented by JavaScript code. For the previous example:
+The rules are encoded using JavaScript as:
 ```javascript
 if(interaction.attributes.action==="play") {
 	aggregation.interest = 0;
@@ -109,9 +110,7 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: app
 
 ### Aggregation Taxonomy
 
-Each content can be described by a set of items from the following taxonomy:
-
-For the following taxonomy:
+Let the objects  be described using the following taxonomy (ontology):
 
 * Root
   * Food
@@ -155,7 +154,7 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: app
 
 ### Content
 
-Let consider there are two advertisment videos: first about Televisions and the second about Food.
+Let us consider there are two videos the users can interact with: first about televisions and the second about food.
 
 
 objectId | type_Root | type_Food | type_Electronics | type_Televisions | type_Radios| entity_Television | entity_Onion | entity_Salt
@@ -163,7 +162,7 @@ objectId | type_Root | type_Food | type_Electronics | type_Televisions | type_Ra
 http://example.com/objects/object1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0
 http://example.com/objects/object2 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 1
 
-Those description of objects can be predefined in InBeat using web admin console [http://localhost:8880/admin/#/gain-description](http://localhost:8880/admin/#/gain-description) or REST API call.
+The description of the objects can be predefined in InBeat using the web admin console [http://localhost:8880/admin/#/gain-description](http://localhost:8880/admin/#/gain-description) or REST API call.
 
 
 The description of both objects in JSON is:
@@ -192,7 +191,7 @@ The description of both objects in JSON is:
 ]
 ```
 
-Description of object can be part of each interaction too. See the next section of this tutorial for more details.
+The objects do not have to be defined before hand. The other option is that the description of the object is sent as  part of the user action. See the next section of this tutorial for more details.
 
 Example of REST API call:
 
@@ -223,10 +222,10 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X POST --header "Content-Type: ap
 
 ### Actions
 
-The tutorial user (identified by http://example.com/users/user1) provides three actions during the session in front of TV. During the first advertisment he smiled (detected by Microsoft Kinect) and increased volume. The second advertisement he skipped using the remote control button. 
+Let us assume that the tutorial user (identified by http://example.com/users/user1) provides three actions during the session in front of the TV. During the first video she smiles (detected by Microsoft Kinect) and increases volume. The second video is skipped using the remote control button. 
 
 
-The first and second action is in JSON format represented as follows:
+The first and second action is in the JSON format represented as follows:
 
 ```json
 {
@@ -267,7 +266,7 @@ The first and second action is in JSON format represented as follows:
 ```
 
 
-The third action is in JSON format represented as follows:
+The third action is in the JSON format represented as follows:
 
 ```json
 {
@@ -395,15 +394,15 @@ Example of output in JSON:
 }]
 ```
 
-The tabular represrntation is following:
+The tabular representation is following:
 
 accountId | objectId | parentObjectId | sessionId | type_Root | type_Food | type_Electronics | type_Televisions | type_Radios| entity_Television | entity_Onion | entity_Salt | interest
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
 INBEAT-TUTORIAL | http://example.com/objects/object1 | | 1427725950907 | **1** | 0 | **1** | 1 | 0 | 1 | 0 | 0 | **1**
 INBEAT-TUTORIAL | http://example.com/objects/object2 | | 1427725950907 | **1** | 1 | 0 | 0 | 0 | 0 | 1 | 1 | **-1**
 
-Final value of interest is computed and output of taxonomy propagation is provided. 
-For the first object user provided two interaction, both of them increased total interest by +0.5. The final value is +1.
+This export contains the final value of interest as well as the result of  taxonomy propagation. 
+For the first object, the user provided two interaction, both of them increased total interest by +0.5. The final value is +1.
 
 
 ### Preference learning
@@ -417,7 +416,8 @@ or
 curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" -d@export.json "http://localhost:8880/pl/api/INBEAT-TUTORIAL/data?uid=http://example.com/users/user1"
 ```
 
-Rule mining can be initiated with a set of parameters: type (jsapriori|arules|lm) , support and confidence.
+Rule mining can be initiated with the following set of parameters: type (jsapriori|arules|lm), support and confidence. We will use the built-in jsapriori rule learner.
+Support and confidence are two standard parameters of association rule learning, for explanation refer e.g. to [Wikipedia](http://en.wikipedia.org/wiki/Association_rule_learning#Useful_Concepts).
 
 ```json
 {
@@ -436,7 +436,7 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: app
 }' > rules.json
 ```
 
-Example of output:
+Example output:
 ```json
 [
 {}, {
@@ -465,7 +465,8 @@ Example of output:
 ]
 ```
 
-All mined rules, sorted according to CBA (decreasingly by confidence, support, rule length):
+The resulting rules are sorted in a descending order according to the following criteria: confidence, support, rule length. The order is important, because it determines which rule will be used in case of multiple rules match a test instance.
+
 
 rule | support | confidence
 --- | --- | ---
@@ -502,6 +503,7 @@ rule | support | confidence
 
 
 ### New objects for classification
+Let us assume that the recommendations are drawn from the set of two objects: object3 and object4. The description of these objects needs to be submitted to InBeat. 
 
 objectId | type_Root | type_Food | type_Electronics | type_Televisions | type_Radios| entity_Garlic | entity_Radio
 --- | --- | --- | --- | --- | --- | --- | --- 
@@ -567,6 +569,12 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X POST --header "Content-Type: ap
 ```
 
 ### Classification/Recommender System
+In this final phase, we use the user's profile consisting of ordered set of rules to rank two possible objects to recommend: object3 and object4. 
+
+This phase consists of two steps: 
+- upload of the rule set exported by the InBeat preference learning module to the recommender (i.e. a simple rule engine), 
+- invocation of the engine on the object3 and object4
+
 
 Use the web admin console [http://localhost:8880/admin/#/rs-rule](http://localhost:8880/admin/#/rs-rule) and 
 [http://localhost:8880/admin/#/rs-classification](http://localhost:8880/admin/#/rs-classification)
@@ -595,12 +603,13 @@ The output:
 ```
 
 objectId | rank | confidence
---- | --- 
+--- | --- | ---
 http://example.com/objects/object3 | negative | 1
 http://example.com/objects/object4 | positive | 1
 
+The reason why  the third object (about _Food_, _Garlic_) is ranked as _negative_ is as follows. Since user skipped the object about _Food_(_Onion_), there is a rule _{type_Food=1} => {interest=negative}_ in the rule list. Since this is the highest rule matching the description of _object3_, it is used for classification. 
 
-For the third object (about _Food_, _Garlic_). Since user skipped object about _Food_(_Onion_), the third objects is ranked as _negative_. Rule _{type_Food=1} => {interest=negative}_ is used for classification.
+The reason why  fourth object (about _Radios_, _Radio_) is ranked as _positive_ is as follows. Since the user smiled during the video about _Televisions_(_Television_) and both _Televisions_ and _Radios_ are subsued under _Electronics_ in the taxonomy, there is a rule _{type_Electronics=1} => {interest=positive}_ in the rule list. Since this is the highest rule matching the description of _object4_, it is used for classification.
 
-For the fourth object (about _Radios_, _Radio_). Since user smiled during the advertisment about _Televisions_(_Television_) and both _Televisions_ and _Radios_ are subgroups of _Electronics_, the fourth objects is ranked as _positive_. Rule _{type_Electronics=1} => {interest=positive}_ is used for classifiaction.
+The confidence 1 associated with both recommendations corresponds to the confidence scores associated with the used rules.
 

@@ -16,7 +16,7 @@ For each page view, the website sends an event to InBeat giving user id, identif
 
 ###What this tutorial covers
 - [Data format for user interactions accepted by InBeat ](#receiving-pageviews)
-- [Export of collected data](#export=of-collected-data)
+- [Export of collected data](#export-of-collected-data)
 - [Building rule-based user model](#preference-learning)
 - [Initializing the recommender system](#classificationrecommender-system)
 - [Invoking recommendation](#recommendation)

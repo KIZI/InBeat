@@ -83,7 +83,7 @@ cd ./inbeat
 ```
 
 ### Deployment on Amazon EC2 
-InBeat can be in a few steps run on cloud Ubuntu instance.
+InBeat can be in a few steps run on a cloud Linux instance.
 
 - Deploy empty Ubuntu 14.04 cloud image to EC2 (https://cloud-images.ubuntu.com/trusty/current/)
 - Install InBeat using the process described in the Production installation instructions above

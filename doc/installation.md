@@ -1,4 +1,9 @@
 # InBeat - Installation
+This web page covers the following installation options:
+ - [development installation in a virtual machine](#local-and-development-installation-recommended)
+ - [automated installation on production server](#production-installation)
+ - [manual installation on production server](#manual-installation)
+ - [cloud deployment (Amazon EC2)](#deployment-on-amazon-ec2)
 
 ## Local and development installation (Recommended)
 
@@ -85,5 +90,9 @@ cd ./inbeat
 ### Deployment on Amazon EC2 
 InBeat can be in a few steps run on a cloud Linux instance.
 
-- Deploy empty Ubuntu 14.04 cloud image to EC2 (https://cloud-images.ubuntu.com/trusty/current/)
-- Install InBeat using the process described in the Production installation instructions above
+- Install Ubuntu 14.04 cloud image. It is one of the template images in EC2, or download  from https://cloud-images.ubuntu.com/trusty/current/.
+- Install git using ``sudo apt-get install git``
+- Install InBeat using the process described in the [automated installation on production server](#production-installation)
+- Make sure to enable HTTP port 80 for inbound traffic in the security group configuration within the Amazon EC2 dashboard.
+
+Tested with image ami-5189a661.

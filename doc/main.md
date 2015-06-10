@@ -9,6 +9,7 @@
 ## Tutorials
 
 * [Smart TV Use Case](./tutorial-smarttv.md)
+* [News Recommender Use Case](./tutorial-newsrec.md)
 * [External RS](./tutorial-external.md)
 
 ## Settings

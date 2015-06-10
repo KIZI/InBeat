@@ -372,7 +372,7 @@ Example of output in JSON:
 The tabular represrntation is following:
 
 accountId | objectId | parentObjectId | sessionId | type_Root | type_Food | type_Electronics | type_Televisions | type_Radios| entity_Television | entity_Onion | entity_Salt | interest
---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- 
+--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
 INBEAT-TUTORIAL | http://example.com/objects/object1 | | 1427725950907 | **1** | 0 | **1** | 1 | 0 | 1 | 0 | 0 | **1**
 INBEAT-TUTORIAL | http://example.com/objects/object2 | | 1427725950907 | **1** | 1 | 0 | 0 | 0 | 0 | 1 | 1 | **-1**
 

@@ -16,7 +16,7 @@ For each page view, the website sends an event to InBeat giving user id, identif
 
 ###What this tutorial covers
 - [Data format for user interactions accepted by InBeat ](#receiving-pageviews)
-- [Aggregation of interest??](#export-of-aggregated-interests)
+- [Export of collected data](#export=of-collected-data)
 - [Building rule-based user model](#preference-learning)
 - [Initializing the recommender system](#classificationrecommender-system)
 - [Invoking recommendation](#recommendation)
@@ -122,7 +122,7 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8880/gai
 ```
 
 
-## Export of aggregated interests
+## Export of collected data
 
 
 ```bash

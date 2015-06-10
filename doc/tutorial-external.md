@@ -17,8 +17,14 @@ INBEAT-TUTORIAL | http://example.com/objects/object2 | http://example.com/users/
 INBEAT-TUTORIAL | http://example.com/objects/object1 | http://example.com/users/user2 | 1433937666223 | 1 | 0 | 1 | 1 | 0 | 1 | 0 | 0 | 0.5
 INBEAT-TUTORIAL | http://example.com/objects/object1 | http://example.com/users/user1 | 1433937683920 | 1 | 0 | 1 | 1 | 0 | 1 | 0 | 0 | 1
 
+Use the web admin console http://localhost:8880/admin/#/gain-export or cURL
 
 ### Example of JSON
+
+```bash
+# Get export
+curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" --header "Accept: application/json" "http://localhost:8880/gain/api/INBEAT-TUTORIAL/export/interests" > export.json
+```
 
 ```json
 [
@@ -79,6 +85,11 @@ INBEAT-TUTORIAL | http://example.com/objects/object1 | http://example.com/users/
 
 ### Example of CSV
 
+```bash
+# Get export
+curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" --header "Accept: text/csv" "http://localhost:8880/gain/api/INBEAT-TUTORIAL/export/interests" > export.json
+```
+
 ```csv
 accountId;objectId;parentObjectId;sessionId;userId;interest;type_Root;type_Electronics;type_Televisions;entity_Television;last;type_Food;entity_Onion;entity_Salt
 INBEAT-TUTORIAL;http://example.com/objects/object1;0;1433937669616;http://example.com/users/user3;1;1;1;1;1;1433937683920;0;0;0
@@ -88,6 +99,11 @@ INBEAT-TUTORIAL;http://example.com/objects/object1;0;1433937660867;http://exampl
 ```
 
 ### Example of MySQL DDL export result
+
+```bash
+# Get export
+curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" --header "Accept: text/plain" "http://localhost:8880/gain/api/INBEAT-TUTORIAL/export/interests" > export.json
+```
 
 ```sql
 DROP TABLE IF EXISTS `INBEAT-TUTORIAL-undefined`; 

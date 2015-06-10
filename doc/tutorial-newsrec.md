@@ -15,13 +15,14 @@ For each page view, the website sends an event to InBeat giving user id, identif
 
 
 ###What this tutorial covers
-- [Data format for user interactions accepted by InBeat ](#interactions-of-users)
+- [Data format for user interactions accepted by InBeat ](#receiving-pageviews)
 - [Aggregation of interest??](#export-of-aggregated-interests)
 - [Building rule-based user model](#preference-learning)
 - [Initializing the recommender system](#classificationrecommender-system)
 - [Invoking recommendation](#recommendation)
 
-## Interactions of users
+## Receiving pageviews
+Let us assume, we had three visitors, each viewing one of the two distinct two news articles.
 
 userId | objectId | location | daytime
 --- | --- | --- | --- 
@@ -29,7 +30,7 @@ http://example.com/users/user1 | http://example.com/objects/object1 | USA | morn
 http://example.com/users/user2 | http://example.com/objects/object1 | GER | morning
 http://example.com/users/user3 | http://example.com/objects/object2 | GER | evening
 
-JSON representation of interaction
+JSON documents  that  the website needs to send to InBeat in order to represent the three pageviews above:
 
 ```json
 {

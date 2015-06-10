@@ -568,10 +568,10 @@ The output:
 [{"objectId":"http://example.com/objects/object4","rank":"positive"}]
 ```
 
-objectId | rank
+objectId | rank | confidence
 --- | --- 
-http://example.com/objects/object3 | ne##gative
-http://example.com/objects/object4 | positive
+http://example.com/objects/object3 | negative | 1
+http://example.com/objects/object4 | positive | 1
 
 
 For the third object (about _Food_, _Garlic_). Since user skipped object about _Food_(_Onion_), the third objects is ranked as _negative_. Rule _{type_Food=1} => {interest=negative}_ is used for classification.

@@ -1,8 +1,34 @@
 # InBeat - Smart TV Use Case 
 
-Let consider the Smart TV use case where the content in semantially enriched. Each fragment of multimedia content is extended about a set of semantic features that describe the fragment. 
+This tutorial describes a complex deployment of InBeat on a "SmartTV" use case, covering advanced topics such as **sensor input**, semantic description of content with **entities** and **ontologies**, application of hand-coded rules for aggregation of implicit feedback into *interest*, and building of **rule-based user models**.
 
-The Smart TV is able to collect inforamtion from two inputs: remote control and Microsoft Kinect sensor. Remote control is for basic actions like play, pause, skip etc. Microsoft Kinect can provide additional interest clues like watching the screen or emotions.
+**_A live demo_** (using simulation buttons instead of real Microsoft Kinect sensor) is available at http://inbeat.eu/demo/base/.
+
+###Synopsis
+InBeat is used to process information about behaviour of TV watchers coming from Microsoft Kinect positioned below the television. The user is recommended new multimedia content to see based on the preference model built by InBeat. 
+
+###Input data
+There are multiple implicit feedback actions send by Kinect for each object (shot), such as *smile* or *user is watching* , in addition to user actions with a remote control such as *pause*. The textual content of the broadcast is semantically enriched with entities, which are linked to the DBpedia ontology. 
+
+The InBeat administrator further needs to provide the definition of aggregation rules for computing the interest.
+
+###What this tutorial covers
+
+Setup
+- [Creating user account](#accounts)
+- [Definition of interest aggregation rules](#agregation-rules)
+- [Definition of the taxonomy (ontology) describing content](#aggregation-taxonomy)
+- [Description of content with entities](#content)
+
+User data acquistion
+- [Format in which InBeat receives user actions](#actions)
+
+User model  building and recommendation
+- [Export of aggregated data](#export-of-aggregated-interests)
+- [Building rule-based preference model](#preference-learning)
+- [Use of the model to rank new content](#classificationrecommender-system)
+
+
 
 ## Accounts
 

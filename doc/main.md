@@ -2,10 +2,10 @@
 
 ## Installation
 
- - [development installation in a virtual machine](#local-and-development-installation-recommended)
- - [automated installation on production server](#production-installation)
- - [manual installation on production server](#manual-installation)
- - [cloud deployment (Amazon EC2)](#deployment-on-amazon-ec2)
+ - [development installation in a virtual machine](./installation.md#local-and-development-installation-recommended)
+ - [automated installation on production server](./installation.md#production-installation)
+ - [manual installation on production server](./installation.md#manual-installation)
+ - [cloud deployment (Amazon EC2)](./installation.md#deployment-on-amazon-ec2)
 
 ## Tutorials
 

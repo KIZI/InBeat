@@ -1,6 +1,10 @@
 # InBeat - external recommender system
+InBeat offers by itself only association rules  as the preference learning/recommendation algorithm. However, InBeat versatile export functionality allows  for easy connection to other recommender toolboxes, such as [MyMediaLite](http://www.mymedialite.net/), which is specifically covered in this tutorial.
 
-InBeat export of aggregated interests per user and object can be used in external recommender systems. 
+
+### What this tutorial covers
+- [Overview of export formats](#export-formats) 
+- [Integration of InBeat with MyMediaLite for item recommendation](#example-of-usage-in-mymedialite)
 
 ## Export formats
 
@@ -96,11 +100,11 @@ INSERT INTO `INBEAT-TUTORIAL-undefined`(Id, `accountId`, `objectId`, `parentObje
 
 ## Example of usage in MyMediaLite
 
-The export can be used in [MyMediaLite](http://www.mymedialite.net/).
+This section shows how InBeat can be used in conjunction with [MyMediaLite](http://www.mymedialite.net/).
 
-For the [item prediction](http://www.mymedialite.net/documentation/item_prediction.html) task, the CSV output of InBeat should be tarnsformed to the supported format (e.g [postitive only feedback file](http://www.mymedialite.net/documentation/implicit_feedback_files.html)). The minimal requirement is to provide two columns: userId and objectId. 
+For the [item prediction](http://www.mymedialite.net/documentation/item_prediction.html) task, the CSV output of InBeat should be transformed to the supported format (e.g [positive only feedback file](http://www.mymedialite.net/documentation/implicit_feedback_files.html)). The minimal requirement is to provide two columns: userId and objectId. 
 
-For tranformation can be used for example the folloewing simple python script
+For transformation can be performed with the following simple python script
 
 ```python
 import pandas
@@ -117,7 +121,7 @@ http://example.com/users/user2,http://example.com/objects/object1
 http://example.com/users/user1,http://example.com/objects/object1
 ```
 
-Example of item recommendation using UserKNN algorithm:
+Example of item recommendation using UserKNN algorithm in MyMediaLite:
 ```bash
 ./item_recommendation --training-file=mymedialite.csv --recommender=UserKNN --prediction-file=prediction.csv
 ```
@@ -129,7 +133,7 @@ http://example.com/users/user2	[]
 http://example.com/users/user1	[http://example.com/objects/object2:0.4142136]
 ```
 
-Summary:
-* for the _...user3_ and the _...user1_, the _...object2_ is recommended, because other users interacted with this object.
-* there is no recommendation for the _...user2_, since the user already interacted with all availble objects.
+Explanation:
+* for  _...user3_ and  _...user1_,  _...object2_ is recommended, because other users interacted with this object.
+* there is no recommendation for  _...user2_, since the user already interacted with all available objects.
 

@@ -106,7 +106,14 @@ var AggregationTableFormat = function () {
                     }
                     cb(err,aggregation);
                 });
-            }
+            },
+            function(aggregation, cb){
+                // extend about object user attributes
+                if(interaction.user.attributes){
+                    aggregation = _.extend(aggregation, interaction.user.attributes);
+                }
+                cb(null,aggregation);
+            }            
         ], function (err, aggregation) {
             // console.log(err,aggregation);
             // console.log(callback);

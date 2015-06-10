@@ -26,39 +26,70 @@ exports.putRules = function (req, res) {
 exports.classify = function(req, res) {
     if (req.params.accountId && req.query.uid) {
         var name =  (req.params.accountId + "-" + req.query.uid).replace(/\W/g, '_');
-        async.waterfall([
-            function ( cb) {
-                _getObjects(req.params.accountId, req.query.id, cb);
-            },
-            function(objects, cb){
-                Rules.findById(name, function(err, rul) {
-                    if (err) {
-                        cb(err,null,null);
-                    } else if (rul===null) {
-                       cb("No rules",null,null);
-                    }else {
-                        cb(null,objects, JSON.parse(rul.content));
+
+        if(req.body && (req.headers['content-type'] === 'application/json' || req.headers['content-type'] === 'application/json;charset=UTF-8')) {
+            async.waterfall([
+                function(cb){
+                    Rules.findById(name, function(err, rul) {
+                        if (err) {
+                            cb(err,null,null);
+                        } else if (rul===null) {
+                           cb("No rules",null,null);
+                        }else {
+                            cb(null,JSON.parse(rul.content));
+                        }
+                    });
+                },
+                function(rules,cb){
+                    var matches = RuleEngine.topMatch(rules,req.body,5);
+                    var result = [];
+                    for(var i=0;i<matches.length;i++) {
+                        result.push({objectId: matches[i], confidence:(1-(i)/parseFloat(matches.length))});
                     }
-                });
-            },
-            function(objects,rules,cb){
-                var rankings = [];
-                async.each(objects, function(item,ecb){
-                    var ranking = RuleEngine.firstMatch(rules,item.taxonomy);
-                    if(ranking.consequent) {
-                        rankings.push({objectId: item.objectId, rank: ranking.consequent.interest});
-                    }
-                    ecb(null);
-                });
-                cb(null,rankings);
-            }
-        ], function (err, recommendations) {
-            if (err) {
-                res.status(500).send(err);
-                return;
-            }
-            res.send(recommendations);
-        });
+                    cb(null,result);
+                }
+            ], function (err, recommendations) {
+                if (err) {
+                    res.status(500).send(err);
+                    return;
+                }
+                res.send(recommendations);
+            });
+        } else {
+            async.waterfall([
+                function ( cb) {
+                    _getObjects(req.params.accountId, req.query.id, cb);
+                },
+                function(objects, cb){
+                    Rules.findById(name, function(err, rul) {
+                        if (err) {
+                            cb(err,null,null);
+                        } else if (rul===null) {
+                           cb("No rules",null,null);
+                        }else {
+                            cb(null,objects, JSON.parse(rul.content));
+                        }
+                    });
+                },
+                function(objects,rules,cb){
+                    var rankings = [];
+                    async.each(objects, function(item,ecb){
+                        var ranking = RuleEngine.firstMatch(rules,item.taxonomy);
+                        if(ranking.consequent) {
+                            rankings.push({objectId: item.objectId, rank: ranking.consequent.interest, confidence: ranking.confidence});
+                        }
+                        ecb(null);
+                    });
+                    cb(null,rankings);
+                }
+            ], function (err, recommendations) {
+                if (err) {
+                    res.status(500).send(err);
+                    return;
+                }
+                res.send(recommendations);
+            });
+        }
     } else {
         res.status(400).end();
     }

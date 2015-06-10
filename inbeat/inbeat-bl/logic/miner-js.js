@@ -16,22 +16,32 @@ var MinerArules = function() {
             }
             var interactions = JSON.parse(data.content);
             // preprocessing
-            var preprocessing = ["interest"];
+            var preprocessing = [task.className];
             for(var i=0;i<interactions.length;i++){
                 // remove specific attributes
-                delete interactions[i].last;
-                delete interactions[i].accountId;
-                delete interactions[i].objectId;
-                delete interactions[i].parentObjectId;
-                delete interactions[i].sessionId;
-                delete interactions[i].userId;
-                // convert interest value
-                if(interactions[i].interest==0) {
-                    interactions[i].interest = "neutral";
-                } else if(interactions[i].interest<0) {
-                    interactions[i].interest = "negative";
+                if ("last"!==task.className)
+                    delete interactions[i].last;
+                if ("accountId"!==task.className)
+                    delete interactions[i].accountId;
+                if ("objectId"!==task.className)
+                    delete interactions[i].objectId;
+                if ("parentObjectId"!==task.className)
+                    delete interactions[i].parentObjectId;
+                if ("sessionId"!==task.className)
+                    delete interactions[i].sessionId;
+                if ("userId"!==task.className)
+                    delete interactions[i].userId;
+                if ("interest"===task.className) {
+                    // convert interest value
+                    if(interactions[i].interest==0) {
+                        interactions[i].interest = "neutral";
+                    } else if(interactions[i].interest<0) {
+                        interactions[i].interest = "negative";
+                    } else {
+                        interactions[i].interest = "positive";
+                    }
                 } else {
-                    interactions[i].interest = "positive";
+                    delete interactions[i].interest;
                 }
                 // detect columns with non-zero values
                 var keys = Object.keys(interactions[i]);
@@ -51,7 +61,7 @@ var MinerArules = function() {
                 }
             }
             // start mining
-            var rules = Apriori.run(interactions,{minSupport: task.support?task.support:0.01, minConfidence: task.confidence?task.confidence:0.01, limit:500, filter: "interest="});
+            var rules = Apriori.run(interactions,{minSupport: task.support?task.support:0.01, minConfidence: task.confidence?task.confidence:0.01, limit:500, filter: task.className+"="});
             callback(null,JSON.stringify(rules));
         });
     };

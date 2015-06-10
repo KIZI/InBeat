@@ -25,7 +25,7 @@ var MinerArules = function() {
             temp.mkdir("miner-arules",function(err, dirPath) {
                 UserInterest.formatExportOutput(JSON.parse(data.content), 'text/csv', {}, function(err, out) {
                     fs.writeFileSync(dirPath+"/"+name+".csv", out);
-                    exec('Rscript "' + __dirname + '/../lib/arules.R" ' + dirPath+"/"+name+".csv " + dirPath+"/"+name+"_rules.csv "+task.support+" "+task.confidence, function (error, stdout, stderr) {
+                    exec('Rscript "' + __dirname + '/../lib/arules.R" ' + dirPath+"/"+name+".csv " + dirPath+"/"+name+"_rules.csv "+task.support+" "+task.confidence+" "+task.className, function (error, stdout, stderr) {
                         if(error) {
                             callback(null, {error: error, stdout: stdout, stderr: stderr});
                         } else {

@@ -1,0 +1,5 @@
+--require ./test/mocha.js
+--require should
+--reporter spec
+--recursive
+--timeout 10000

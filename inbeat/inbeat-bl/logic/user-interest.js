@@ -1,56 +1,56 @@
 var UserInterest = function() {
 
-	var Interaction = require('../model/interaction');
-	var Attribute = require('../model/attribute');
-	var ObjectInteractions = require('./object-interactions');
-	var ObjectTaxonomy = require('./object-taxonomy');
+	// var Interaction = require('../model/interaction');
+	// var Attribute = require('../model/attribute');
+	// var ObjectInteractions = require('./object-interactions');
+	// var ObjectTaxonomy = require('./object-taxonomy');
 
     var _ = require('underscore');
 
-	_getAllUserInterests = function(accountId, userId, callback) {
-		var output = [];
-		_getInterestForSession(accountId, userId, function(err, sessions) {
-			var sessionsCount = sessions.length;
-			if (sessionsCount <= 0) {
-				callback(null, output);
-				return;
-			}
-			for (var sessionIndex in sessions) {
-				(function(sessionIndex) {
-					var interests = sessions[sessionIndex].interests;
-					var interestsCount = interests.length;
-					for (var interestIndex in interests) {
-						(function(interestIndex) {
-							ObjectTaxonomy.objectAttributesTaxonomy(accountId, interests[interestIndex].objectId, interests[interestIndex].parentObjectId, true, function(err, data) {
-								suboutput = {
-									'sessionId': sessions[sessionIndex].sessionId,
-									'objectId': interests[interestIndex].objectId,
-									'parentObjectId': interests[interestIndex].parentObjectId,
-									'interest': interests[interestIndex].interest
-								};
-								if (data.length > 0)
-									for (var key in data[0].taxonomy) {
-										var cKey = key.replace(/^\s+|\s+$/g, '');
-										cKey = cKey.replace(/\W/g, '');
-										//cKey = cKey.replace(/^non/i,'');
-										suboutput[cKey] = data[0].taxonomy[key];
-									}
-								output.push(suboutput);
+	// _getAllUserInterests = function(accountId, userId, callback) {
+	// 	var output = [];
+	// 	_getInterestForSession(accountId, userId, function(err, sessions) {
+	// 		var sessionsCount = sessions.length;
+	// 		if (sessionsCount <= 0) {
+	// 			callback(null, output);
+	// 			return;
+	// 		}
+	// 		for (var sessionIndex in sessions) {
+	// 			(function(sessionIndex) {
+	// 				var interests = sessions[sessionIndex].interests;
+	// 				var interestsCount = interests.length;
+	// 				for (var interestIndex in interests) {
+	// 					(function(interestIndex) {
+	// 						ObjectTaxonomy.objectAttributesTaxonomy(accountId, interests[interestIndex].objectId, interests[interestIndex].parentObjectId, true, function(err, data) {
+	// 							suboutput = {
+	// 								'sessionId': sessions[sessionIndex].sessionId,
+	// 								'objectId': interests[interestIndex].objectId,
+	// 								'parentObjectId': interests[interestIndex].parentObjectId,
+	// 								'interest': interests[interestIndex].interest
+	// 							};
+	// 							if (data.length > 0)
+	// 								for (var key in data[0].taxonomy) {
+	// 									var cKey = key.replace(/^\s+|\s+$/g, '');
+	// 									cKey = cKey.replace(/\W/g, '');
+	// 									//cKey = cKey.replace(/^non/i,'');
+	// 									suboutput[cKey] = data[0].taxonomy[key];
+	// 								}
+	// 							output.push(suboutput);
 
-								if (--interestsCount <= 0) {
-									if (--sessionsCount <= 0) {
-										callback(null, output);
-									}
-								}
-							});
-						})(interestIndex);
-					}
+	// 							if (--interestsCount <= 0) {
+	// 								if (--sessionsCount <= 0) {
+	// 									callback(null, output);
+	// 								}
+	// 							}
+	// 						});
+	// 					})(interestIndex);
+	// 				}
 
 
-				})(sessionIndex);
-			}
-		});
-	};
+	// 			})(sessionIndex);
+	// 		}
+	// 	});
+	// };
 
 	_formatExportOutput = function(output, format, params, callback) {
 		if (!output || output.length <= 0) {
@@ -124,7 +124,7 @@ var UserInterest = function() {
 
 
 	return {
-		getAllUserInterests: _getAllUserInterests,
+		// getAllUserInterests: _getAllUserInterests,
 		formatExportOutput: _formatExportOutput
 	};
 

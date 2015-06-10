@@ -36,6 +36,7 @@ exports.mineRules = function(req, res) {
         var task = {};
         task.confidence = (input && input.confidence)?input.confidence:0.01;
         task.support = (input && input.support)?input.support:0.01;
+        task.className = (input && input.className)?input.className:"interest";
 
         if(input && input.type) {
             switch (input.type) {

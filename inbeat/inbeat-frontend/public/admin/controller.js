@@ -308,15 +308,15 @@ App.controller('gain-description', ['$scope','$http',function($scope,$http) {
 App.controller('pl-rule', ['$scope','$http',function($scope,$http) {
     $scope.clear();
     $scope.mine = function(){
-        var param = {type: "easyminer", support: ($scope.support && $scope.support!="")?parseFloat($scope.support):0.01, confidence: ($scope.confidence && $scope.confidence!="")?parseFloat($scope.confidence):0.01};
+        var param = {type: "easyminer", support: ($scope.support && $scope.support!="")?parseFloat($scope.support):0.01, confidence: ($scope.confidence && $scope.confidence!="")?parseFloat($scope.confidence):0.01, className: ($scope.className && $scope.className!="")?$scope.className:"interest"};
         $http.put('/pl/api/'+$scope.accountId+'/rules'+($scope.userId?("?uid="+$scope.userId):""),param).success($scope.output).error($scope.output);
     };
     $scope.mine2 = function(){
-        var param = {type: "arules", support: ($scope.support && $scope.support!="")?parseFloat($scope.support):0.01, confidence: ($scope.confidence && $scope.confidence!="")?parseFloat($scope.confidence):0.01};
+        var param = {type: "arules", support: ($scope.support && $scope.support!="")?parseFloat($scope.support):0.01, confidence: ($scope.confidence && $scope.confidence!="")?parseFloat($scope.confidence):0.01, className: ($scope.className && $scope.className!="")?$scope.className:"interest"};
         $http.put('/pl/api/'+$scope.accountId+'/rules'+($scope.userId?("?uid="+$scope.userId):""),param).success($scope.output).error($scope.output);
     };
     $scope.mine3 = function(){
-        var param = {type: "jsapriori", support: ($scope.support && $scope.support!="")?parseFloat($scope.support):0.01, confidence: ($scope.confidence && $scope.confidence!="")?parseFloat($scope.confidence):0.01};
+        var param = {type: "jsapriori", support: ($scope.support && $scope.support!="")?parseFloat($scope.support):0.01, confidence: ($scope.confidence && $scope.confidence!="")?parseFloat($scope.confidence):0.01, className: ($scope.className && $scope.className!="")?$scope.className:"interest"};
         $http.put('/pl/api/'+$scope.accountId+'/rules'+($scope.userId?("?uid="+$scope.userId):""),param).success($scope.output).error($scope.output);
     };
     $scope.get = function(){
@@ -354,7 +354,7 @@ App.controller('rs-rule', ['$scope','$http',function($scope,$http) {
 App.controller('rs-classification', ['$scope','$http',function($scope,$http) {
     $scope.clear();
     $scope.classify = function(){
-        $http.put('/rs/api/'+$scope.accountId+'/classification'+($scope.userId?("?uid="+$scope.userId):"")+"&"+($scope.objectId?("id="+$scope.objectId):"")).success($scope.output).error($scope.output);
+        $http.put('/rs/api/'+$scope.accountId+'/classification'+($scope.userId?("?uid="+$scope.userId):"")+"&"+($scope.objectId?("id="+$scope.objectId):""),$scope.source?$scope.source:null).success($scope.output).error($scope.output);
     };
 }]);
 

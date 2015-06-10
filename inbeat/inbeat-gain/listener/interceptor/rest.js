@@ -58,6 +58,12 @@ var _processData = function(request, parsedData, callbackRequest) {
 	if (parsedData.attributes) {
 		interaction.attributes = parsedData.attributes;
 	}
+	if (parsedData.user && parsedData.user.attributes) {
+		interaction.user.attributes = parsedData.user.attributes;
+	}
+	if (parsedData.session && parsedData.session.attributes) {
+		interaction.session.attributes = parsedData.session.attributes;
+	}
 	callbackRequest(null, interaction);
 };
 

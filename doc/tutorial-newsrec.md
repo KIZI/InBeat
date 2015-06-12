@@ -178,7 +178,7 @@ INBEAT-TUTORIAL | http://example.com/objects/object1 | | 1433931342437 | null | 
 INBEAT-TUTORIAL | http://example.com/objects/object1 | | 1433931336651 | null | USA | morning
 
 
-## Preference learning
+## Association rule learning
 
 Use the web admin console [http://localhost:8880/admin/#/pl-data](http://localhost:8880/admin/#/pl-data) and 
 [http://localhost:8880/admin/#/pl-rule](http://localhost:8880/admin/#/pl-rule)

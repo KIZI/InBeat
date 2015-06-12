@@ -169,7 +169,7 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8880/gai
 }'
 ```
 
-### Export of interests
+### Export of aggregated data
 
 InBeat GAIN module provides an export of aggregated data. It contains information about the final interest per object and the semantic description of object (including propagation in taxonomy).
 

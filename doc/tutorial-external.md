@@ -9,6 +9,7 @@ InBeat offers by itself only association rules  as the preference learning/recom
 ## Export formats
 
 InBeat support three formats for exports: JSON, CSV and MySQL DDL script.
+The following table shows example data returned by the [/export/interests](README.md#export-of-aggregated-data) call, which returns aggregated data. Example result in a table format is listed below.
 
 accountId | objectId | userId | sessionId | type_Root | type_Food | type_Electronics | type_Televisions | type_Radios| entity_Television | entity_Onion | entity_Salt | interest
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- 

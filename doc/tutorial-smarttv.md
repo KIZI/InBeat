@@ -1,4 +1,5 @@
-# InBeat Tutorial - Sensors and Ontologies  ("Smart TV Use Case")
+# InBeat Tutorial - Sensors and Ontologies  
+## A "Smart TV Use Case"
 
 This tutorial describes a complex deployment of InBeat on a "SmartTV" use case, covering advanced topics such as **sensor input**, semantic description of content with **entities** and **ontologies**, application of hand-coded rules for aggregation of implicit feedback into *interest*, and building of **rule-based user models**.
 

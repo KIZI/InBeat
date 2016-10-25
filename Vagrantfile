@@ -9,7 +9,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "chef/ubuntu-14.04"
+  config.vm.box = "ubuntu/trusty64"
 
   config.vm.hostname = "inbeat"
 
@@ -18,11 +18,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 443, host: 8443
 
   config.vm.synced_folder "inbeat", "/var/www/inbeat"
-
-  config.omnibus.chef_version = :latest
-
-  # vagrant plugin install vagrant-vbguest
-  # vagrant plugin install vagrant-omnibus
 
   config.vm.provision :chef_solo do |chef|
     chef.custom_config_path = "Vagrantfile.chef"

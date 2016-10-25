@@ -28,6 +28,8 @@ Other installation possibilities are described in the [documentation](./doc/main
 
 ### Vagrant
 
+#### Build a new image (recommended) 
+
 ```bash
 # install virtualbox and vagrant 
 # if this does not proceed correctly, install latest version from virtualbox.org and vagrantup.com
@@ -42,6 +44,19 @@ vagrant plugin install vagrant-omnibus
 vagrant up
 # login to vagrant virtual server - optional
 # vagrant ssh
+```
+
+#### Pre-built image
+
+```bash
+# install virtualbox and vagrant 
+# if this does not proceed correctly, install latest version from virtualbox.org and vagrantup.com
+sudo apt-get install virtualbox vagrant
+# create local copy of inbeat git repository
+git clone https://github.com/KIZI/InBeat.git
+cd InBeat
+# start virtual server and install all dependencies
+VAGRANT_VAGRANTFILE=Vagrantfile.box vagrant up
 ```
 
 Open in your browser:

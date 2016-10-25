@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+# InBeat - vagrant + virtualbox + ubuntu + chef
+# @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+#
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.box = "InBeat"
+  config.vm.box_url = "http://inbeat.eu/InBeat.box"
+
+  config.vm.hostname = "inbeat"
+
+  # frontend
+  config.vm.network :forwarded_port, guest: 80, host: 8880
+  config.vm.network :forwarded_port, guest: 443, host: 8443  
+
+end

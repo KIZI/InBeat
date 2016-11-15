@@ -2,6 +2,7 @@ args<-commandArgs(TRUE)
 
 library(arules) # load lib
 library(pmml) # load lib
+library(rCBA) # load lib
 train <- read.csv(args[1],header=TRUE, sep = ";") # load csv
 className <- args[5]
 # preprocessing
@@ -35,8 +36,8 @@ txns <- as(train,"transactions") # convert
 rules <- apriori(txns, parameter = list(confidence = as.numeric(args[4]), support= as.numeric(args[3]), minlen=2)) # apriori
 rules <- subset( rules, subset = rhs %pin% paste(className,"=",sep="")) # filter
 rules <- sort(rules,by = "confidence") # sort
-#write.PMML(rules, file = args[2])
 
 rules <- as(rules,"data.frame") # convert
+rules <- pruning(train, rules, method="m2cba")
 rules <- rules[,-c(4)] # remove last column
 write.csv2(rules, args[2], row.names=FALSE,quote = FALSE,sep=";") # save

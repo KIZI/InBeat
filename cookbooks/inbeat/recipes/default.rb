@@ -3,6 +3,14 @@
 
 log "Installation started ..."
 
+# add java repository
+bash "add repository" do
+  user "root"
+  code <<-EOH     
+  add-apt-repository -y ppa:openjdk-r/ppa
+  EOH
+end
+
 # update
 log "Update from repos"
 bash "apt-get update" do
@@ -15,21 +23,20 @@ end
 # # core
 package "zip"
 package "git-core"
+package "openjdk-8-jdk"
 
 # nodejs
 bash "nodejs" do
 	cwd "/tmp/"
 	user "root"
 	code <<-EOH
-	curl -sL https://deb.nodesource.com/setup | sudo bash -
-	apt-get install -y nodejs
+  curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+  apt-get install -y nodejs
   apt-get install -y npm || true
   ln -sf /usr/bin/nodejs /usr/bin/node
 	EOH
   not_if { File.exist?("/usr/bin/node") }
 end
-# package "nodejs"
-# package "npm"
 
 # pm2
 bash "pm2" do
@@ -73,12 +80,25 @@ service "nginx" do
 end
 
 # R + arules
+bash "r repos" do
+  user "root"
+  cwd "/tmp/"
+  code <<-EOH
+  codename=$(lsb_release -c -s)
+  echo "deb http://cran.fhcrc.org/bin/linux/ubuntu $codename/" | sudo tee -a /etc/apt/sources.list > /dev/null
+  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+  add-apt-repository ppa:marutter/rdev
+  apt-get update
+  EOH
+end
+
 package "libxml2"
 package "libxml2-dev"
 package "r-base"
 package "r-base-dev"
 package "r-cran-xml"
 package "libcurl4-gnutls-dev"
+package "libssl-dev"
 
 template "/tmp/install.R" do
   source "install.erb"
@@ -88,6 +108,8 @@ bash "r-packages" do
 	cwd "/tmp/"
 	user "root"
 	code <<-EOH
+  ln -sfn /usr/lib/jvm/java-8-openjdk-amd64/ /usr/lib/jvm/default-java
+  R CMD javareconf
 	Rscript install.R
 	EOH
 end
@@ -101,6 +123,7 @@ bash "InBeat nodejs modules" do
   EOH
 end
 
+# inbeat service
 bash "InBeat start PM2" do
   user "root"
   cwd "#{node['inbeat']['root']}"

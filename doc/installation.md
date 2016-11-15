@@ -67,10 +67,12 @@ sudo chef-solo -c ./solo.rb
 - [Node.js](https://nodejs.org/) + npm
 - [R](http://cran.r-project.org/)
 - R packages - arules, pmml, XML
-  * install.packages(c("arules","pmml","XML"),dependencies=TRUE, repos="http://mirrors.nic.cz/R/")
+  * install.packages(c("arules","pmml","XML"),dependencies=TRUE, repos="http://cran.rstudio.com")
 - Optional
   * proxy - [NGINX](http://nginx.org/), ...
   * monitoring service - [PM2](https://github.com/Unitech/pm2), ...
+  * Java 8 (only for arules/CBA preference learning)
+    * install.packages(c("rCBA"),dependencies=TRUE, repos="http://cran.rstudio.com")
 
 ### Installation
 

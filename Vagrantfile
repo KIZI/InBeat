@@ -19,6 +19,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder "inbeat", "/var/www/inbeat"
 
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--cpus", "2"]
+  end
+
+  # increase swap: http://jeqo.github.io/blog/devops/vagrant-quickstart/
+  config.vm.provision "shell", path: "increase_swap.sh"
+
   config.vm.provision :chef_solo do |chef|
     chef.custom_config_path = "Vagrantfile.chef"
     chef.cookbooks_path = "cookbooks"

@@ -127,7 +127,7 @@ curl -X POST --header "Content-Type: application/json" http://localhost:8880/gai
 
 ```bash
 # Get export
-curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" "http://localhost:8880/gain/api/INBEAT-TUTORIAL/export/interests > export.json
+curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" "http://localhost:8880/gain/api/INBEAT-TUTORIAL/export/interests" > export.json
 ```
 
 Example of output in JSON:

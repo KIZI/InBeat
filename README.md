@@ -5,7 +5,7 @@ Interest Beat is a service for recommendation of content. InBeat was designed wi
 ## Latest Updates
 
 - 2016-11-15: Integration of a [rule pruning](https://cran.r-project.org/package=rCBA) as a part of the [Preference Learning](#preference-learning) module based on the [Apriori](https://cran.r-project.org/package=arules). 
-  * Allows to significantly reduce the amount of rules in user models that reduces its memory requirements and speeds up recommendations.
+  * Allows to significantly reduce the amount of rules in user models. This reduces memory requirements and speeds up recommendations.
 
 ## Demo
 

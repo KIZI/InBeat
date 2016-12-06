@@ -21,7 +21,24 @@ We provide a set of installation scripts to build a complete image with InBeat s
 
 Other installation possibilities are described in the [documentation](./doc/main.md).
 
-### Prerequisites
+
+### Docker
+
+- [Docker](https://www.docker.com/)
+  * tested with Docker 1.12+
+
+```bash
+# build a docker image
+docker build -t inbeat ./
+# or pull from docker hub
+docker pull kizi/inbeat
+# run 
+docker run -d -p 8880:80 --name inbeat inbeat
+```
+
+### Vagrant
+
+Recommended for development purposes:
 
 - [VirtualBox](https://www.virtualbox.org/)
   * tested with virtual box 4.3.2.8
@@ -30,8 +47,6 @@ Other installation possibilities are described in the [documentation](./doc/main
   * Plugins
     * vagrant plugin install vagrant-vbguest
     * vagrant plugin install vagrant-omnibus
-
-### Vagrant
 
 #### Build a new image (recommended) 
 
@@ -49,19 +64,6 @@ vagrant plugin install vagrant-omnibus
 vagrant up
 # login to vagrant virtual server - optional
 # vagrant ssh
-```
-
-#### Pre-built image
-
-```bash
-# install virtualbox and vagrant 
-# if this does not proceed correctly, install latest version from virtualbox.org and vagrantup.com
-sudo apt-get install virtualbox vagrant
-# create local copy of inbeat git repository
-git clone https://github.com/KIZI/InBeat.git
-cd InBeat
-# start virtual server and install all dependencies
-VAGRANT_VAGRANTFILE=Vagrantfile.box vagrant up
 ```
 
 Open in your browser:

@@ -6,7 +6,7 @@ services:
   - docker
 
 install:
-  - sudo apt-get update && sudo apt-get install -y nodejs nodejs-legacy npm
+#  - sudo apt-get update && sudo apt-get install -y nodejs nodejs-legacy npm
   - ( cd inbeat && sudo ./install.sh )
 #  - travis_wait 60 docker build -t inbeat .
 #  - docker run -d -p 8880:80 --name inbeat inbeat

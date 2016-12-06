@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+
+services:
+  - mongodb
+
+install:
+  - ( cd inbeat && ./install.sh )
+
+script:
+  - ( cd inbeat/inbeat-bl && npm test)

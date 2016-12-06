@@ -1,6 +1,10 @@
 language: generic
 sudo: required
 
+addons:
+  services:
+    - mongod
+
 services:
   - mongodb
   - docker

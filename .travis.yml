@@ -10,9 +10,9 @@ services:
 addons:
   apt:
     sources:
-    - mongodb-3.0-precise
+      - mongodb-3.0-precise
     packages:
-    - mongodb-org-server
+      - mongodb-org-server
 
 install:
   - sudo curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
@@ -23,6 +23,9 @@ install:
   - ( cd inbeat && sudo ./install.sh )
   - travis_wait 60 docker build -t inbeat .
   - docker run -d -p 8880:80 --name inbeat inbeat
+
+before_script:
+  - sleep 15
 
 script:
   - ( cd inbeat/inbeat-bl && npm test)

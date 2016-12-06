@@ -1,13 +1,18 @@
 language: generic
 sudo: required
 
-addons:
-  services:
-    - mongod
-
 services:
+  - mongo mydb_test --eval 'db.addUser("travis", "test");'
+  - sleep 15
   - mongodb
   - docker
+
+addons:
+  apt:
+    sources:
+    - mongodb-3.0-precise
+    packages:
+    - mongodb-org-server
 
 install:
   - sudo curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -

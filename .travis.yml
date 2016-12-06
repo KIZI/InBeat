@@ -9,7 +9,7 @@ install:
   - sudo apt-get update && sudo apt-get install -y nodejs npm
   - travis_wait 60 docker build -t inbeat .
   - docker run -d -p 8880:80 --name inbeat inbeat
-  - ( cd inbeat && ./install.sh )
+  - ( cd inbeat && sudo ./install.sh )
 
 script:
   - ( cd inbeat/inbeat-bl && npm test)

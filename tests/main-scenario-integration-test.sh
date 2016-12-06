@@ -118,27 +118,27 @@ if ! grep -q "\"consequent\":{\"interest\":\"positive\"}" "rules.json"; then
   exit 1
 fi
 
-# Get rules arules
-response=$(curl --write-out %{http_code} --silent --output /dev/null  --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" "http://localhost:8880/pl/api/INBEAT-TEST/rules?uid=http://example.com/users/user1" --data-binary '{
-  "type": "arules",
-  "support": 0.01,
-  "confidence": 0.01
-}')
-echo "Get rules $response"
-if [ "$response" -ne "200" ]; then
-  echo "Failed"
-  exit 1
-fi
-curl --silent --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" "http://localhost:8880/pl/api/INBEAT-TEST/rules?uid=http://example.com/users/user1" --data-binary '{
-  "type": "arules",
-  "support": 0.01,
-  "confidence": 0.01
-}' > rules.csv
-if ! grep -q "{} =>" "rules.csv"; then
-  echo "Failed rules.csv"
-  cat rules.csv
-  exit 1
-fi
+# # Get rules arules
+# response=$(curl --write-out %{http_code} --silent --output /dev/null  --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" "http://localhost:8880/pl/api/INBEAT-TEST/rules?uid=http://example.com/users/user1" --data-binary '{
+#   "type": "arules",
+#   "support": 0.01,
+#   "confidence": 0.01
+# }')
+# echo "Get rules $response"
+# if [ "$response" -ne "200" ]; then
+#   echo "Failed"
+#   exit 1
+# fi
+# curl --silent --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" "http://localhost:8880/pl/api/INBEAT-TEST/rules?uid=http://example.com/users/user1" --data-binary '{
+#   "type": "arules",
+#   "support": 0.01,
+#   "confidence": 0.01
+# }' > rules.csv
+# if ! grep -q "{} =>" "rules.csv"; then
+#   echo "Failed rules.csv"
+#   cat rules.csv
+#   exit 1
+# fi
 
 # Upload rules RS
 response=$(curl --write-out %{http_code} --silent --output /dev/null --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application/json" -d@rules.json "http://localhost:8880/rs/api/INBEAT-TEST/rules?uid=http://example.com/users/user1")

@@ -6,7 +6,7 @@ services:
   - docker
 
 install:
-  - docker build -t inbeat .
+  - travis_wait 60 docker build -t inbeat .
   - docker run -d -p 8880:80 --name inbeat inbeat
   - ( cd inbeat && ./install.sh )
 

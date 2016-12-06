@@ -114,6 +114,7 @@ curl --silent --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: ap
 }' > rules.json
 if ! grep -q "\"consequent\":{\"interest\":\"positive\"}" "rules.json"; then
   echo "Failed rules.json"
+  cat rules.json
   exit 1
 fi
 
@@ -135,6 +136,7 @@ curl --silent --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: ap
 }' > rules.csv
 if ! grep -q "{} =>" "rules.csv"; then
   echo "Failed rules.csv"
+  cat rules.csv
   exit 1
 fi
 
@@ -186,6 +188,7 @@ fi
 curl --silent --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8880/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object3" > "object3.json"
 if ! grep -q "negative" "object3.json"; then
   echo "Failed object3.json"
+  cat object3.json
   exit 1
 fi
 
@@ -198,6 +201,7 @@ fi
 curl --silent --user "INBEAT-TEST:INBEAT-TEST" -X PUT "http://localhost:8880/rs/api/INBEAT-TEST/classification?uid=http://example.com/users/user1&id=http://example.com/objects/object4" > "object4.json"
 if ! grep -q "positive" "object4.json"; then
   echo "Failed object4.json"
+  cat object4.json
   exit 1
 fi
 

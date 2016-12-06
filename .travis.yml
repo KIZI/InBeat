@@ -6,12 +6,12 @@ services:
   - docker
 
 install:
-  - sudo apt-get update && sudo apt-get install -y nodejs npm
-  - travis_wait 60 docker build -t inbeat .
-  - docker run -d -p 8880:80 --name inbeat inbeat
+  - sudo apt-get update && sudo apt-get install -y nodejs nodejs-legacy npm
   - ( cd inbeat && sudo ./install.sh )
+#  - travis_wait 60 docker build -t inbeat .
+#  - docker run -d -p 8880:80 --name inbeat inbeat
 
 script:
   - ( cd inbeat/inbeat-bl && npm test)
-  - docker ps | grep -q inbeat
-  - ( cd tests && ./main-scenario-integration-test.sh )
+#  - docker ps | grep -q inbeat
+#  - ( cd tests && ./main-scenario-integration-test.sh )

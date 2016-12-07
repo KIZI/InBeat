@@ -31,11 +31,11 @@ Other installation possibilities are described in the [documentation](./doc/main
 
 ```bash
 # build a docker image
-docker build -t inbeat ./
+docker build -t inbeat .
 # or pull from docker hub
 docker pull kizi/inbeat
 # run 
-docker run -d -p 8880:80 --name inbeat inbeat
+docker run -d -p 8880:80 --name inbeat kizi/inbeat
 ```
 
 ### Vagrant

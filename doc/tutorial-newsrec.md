@@ -1,5 +1,7 @@
 # InBeat - News Recommender System
 
+![](https://docs.google.com/drawings/export/png?id=12K2DH4qPVp0dTwMpk82OUhQt1KmiIqoLTiN4YNlK-gE)
+
 ###Scope
 This tutorial describes a basic use case, in which InBeat is used to recommend articles on a news website using  association rules. 
 

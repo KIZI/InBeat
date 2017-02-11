@@ -2,6 +2,7 @@
 # @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
 
 server {
+  client_max_body_size 5M;
 	listen 80;
 	server_name  <%= node['hostname'] %>;
 

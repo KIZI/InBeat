@@ -7,6 +7,8 @@ This tutorial describes a complex deployment of InBeat on a "SmartTV" use case, 
 ###The story
 InBeat is used to process information about behaviour of TV watchers coming from Microsoft Kinect positioned below the television. The user is recommended new multimedia content to see based on the preference model built by InBeat. 
 
+![](https://docs.google.com/drawings/export/png?id=18HnpJ-zUKhucwUvCHsr79ThlyfhZzem99e1WggvHA1E)
+
 ###Input data
 There are multiple implicit feedback actions send by Kinect for each object (shot), such as *smile* or *user is watching* , in addition to user actions with a remote control such as *pause*. The textual content of the broadcast is semantically enriched with entities, which are linked to the DBpedia ontology. 
 

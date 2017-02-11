@@ -154,9 +154,17 @@ exports.getTaxonomy = function(req, res) {
 
 exports.updateTaxonomy = function(req, res) {
     if (req.params.accountId && req.body) {
-        AggregationTaxonomy.upsert({id:req.params.accountId,content:req.body.body}, function(err, rules) {
-            res.send(err);
-        });
+        if(req.headers['content-type']==='application/json'){
+            AggregationTaxonomy.upsert({id:req.params.accountId,content:req.body.body}, function(err, rules) {
+                res.send(err);
+            });
+        } else {
+            AggregationTaxonomy.convert(req.body, function(err, converted) {
+                AggregationTaxonomy.upsert({id:req.params.accountId,content:JSON.stringify(converted)}, function(err, rules) {
+                    res.send(err);
+                });
+            });
+        }
     } else {
         res.status(400).end();
     }

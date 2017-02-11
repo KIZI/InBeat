@@ -1,3 +1,15 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+/**
+ * Main object to access all shared business logic.
+ */
 var InBeatBusinessLogic = function() {
 
 	var mongoose = require('mongoose');

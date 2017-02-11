@@ -13,6 +13,19 @@
 * [Advanced: sensor support and ontologies](./tutorial-smarttv.md) This tutorial is accompanied by a [demo](http://inbeat.eu/demo/base/) using a SmartTV emulated by YouTube player.
 * [Integrating InBeat with other recommender frameworks](./tutorial-external.md) Shows how to use InBeat in conjunction with other recommender algorithms, such as various collaborative  filtering, implemented in other recommender toolboxes  [MyMediaLite](http://www.mymedialite.net/).
 
+## REST APIS
+
+- [GAIN REST API](../inbeat/inbeat-frontend/public/gain/docs/api.txt) ([on-line](http://inbeat.eu/gain/docs/rest))
+- [PL REST API](../inbeat/inbeat-frontend/public/pl/docs/api.txt) ([on-line](http://inbeat.eu/pl/docs/rest))
+- [RS REST API](../inbeat/inbeat-frontend/public/rs/docs/api.txt) ([on-line](http://inbeat.eu/rs/docs/rest))
+
+## Extensions
+
+Currently supported main custom extensions (Others will be announced soon!):
+
+- [Custom interceptors](./extensios.md#custom-interceptors)
+- [Custom PL miners](./extensios.md#custom-miners)
+
 ## Settings
 
-All parameters can be set by edditing the configuration file: config.js (/inbeat/config.js). The recommended option is to edit only the global configuration file.  There is a set of specific configuration files for each InBeat module, too (/inbeat/{module}/config.js). Those files inherit from the global configuration and can overwite specific properties if needed. 
+All parameters can be set by editing the configuration file: config.js (/inbeat/config.js). The recommended option is to edit only the global configuration file.  There is a set of specific configuration files for each InBeat module, too (/inbeat/{module}/config.js). Those files inherit from the global configuration and can overwrite specific properties if needed. 

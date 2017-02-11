@@ -1,3 +1,16 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+/**
+ * Preference Learning data model object
+ */
+
 var PLData = function() {
 
 	var mongoose = require('mongoose');

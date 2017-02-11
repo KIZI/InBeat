@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# @author: Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+# Increase the size of swap in order to properly install all dependecies in Vagrant/Docker.
 # Inspired by:
 # http://jeqo.github.io/blog/devops/vagrant-quickstart/
 

@@ -1,4 +1,12 @@
 #!/bin/bash
+# +-+-+-+-+-+-+
+# |I|n|B|e|a|t|
+# +-+-+-+-+-+-+
+# 
+# @author: Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+# Integration tests to check automatic builds and validate installations.
+# 
+
 # Create account in InBeat
 response=$(curl --write-out %{http_code} --silent --output /dev/null --user "admin:admin" -X PUT --header "Content-Type: application/json" http://localhost:8880/gain/api/admin/account --data-binary '[
   {

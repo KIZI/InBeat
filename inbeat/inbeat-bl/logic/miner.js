@@ -1,3 +1,16 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+/**
+ * Business logic to execute format external service EasyMiner (Currently under development)
+ */
+
 var Miner = function() {
 
 	var Logger = require('../config').Logger;
@@ -16,12 +29,13 @@ var Miner = function() {
 
     var configMysql = require('./../config').mysql;
 
-    var minerURI = 'http://connect-dev.lmcloud.vse.cz/LinkedTV/';
-	var username="gain";
-	var password="gain";
+    var minerURI = 'http://connect-dev.lmcloud.vse.cz/';
+	var username="username";
+	var password="password";
 	var auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 
-	var _register = function(resource, regCallback) {
+	// register data 
+    var _register = function(resource, regCallback) {
 		if (!resource) {
 			regCallback('Miner - invalid register parameters object', null);
 			return;
@@ -44,6 +58,7 @@ var Miner = function() {
 		});
 
 	};
+
 
 	var _import = function(id, dictionary, callback) {
 		if (!dictionary || dictionary === '' || !id || id === '') {

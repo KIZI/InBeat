@@ -6,6 +6,7 @@ Interest Beat is a service for recommendation of content. InBeat was designed wi
 
 ## Latest updates
 
+- 2017-01-24: Included TravisCI to continuously check the builds.
 - 2016-11-15: Integration of a [rule pruning](https://cran.r-project.org/package=rCBA) as a part of the [Preference Learning](#preference-learning) module based on the [Apriori](https://cran.r-project.org/package=arules). 
   * Allows to significantly reduce the amount of rules in user models. This reduces memory requirements and speeds up recommendations.
 
@@ -26,26 +27,28 @@ Other installation possibilities are described in the [documentation](./doc/main
 
 ### Docker
 
+Recommended for testing purposes and other installations.
+
 - [Docker](https://www.docker.com/)
   * tested with Docker 1.12+
 
 ```bash
-# build a docker image
-docker build -t inbeat .
-# or pull from docker hub
+# pull from docker hub
 docker pull kizi/inbeat
+# or build a docker image from scratch
+# docker build -t inbeat .
 # run 
 docker run -d -p 8880:80 --name inbeat kizi/inbeat
 ```
 
 ### Vagrant
 
-Recommended for development purposes:
+For development purposes:
 
 - [VirtualBox](https://www.virtualbox.org/)
   * tested with virtual box 4.3.2.8
 - [Vagrant](https://www.vagrantup.com/)
-  * tested with vagrant  1.7.2
+  * tested with vagrant 1.7.2
   * Plugins
     * vagrant plugin install vagrant-vbguest
     * vagrant plugin install vagrant-omnibus

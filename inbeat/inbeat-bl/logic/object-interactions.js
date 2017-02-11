@@ -1,3 +1,15 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+/**
+ * Merge object attributes and interactions - for specific multimedia content 
+ */
 var ObjectInteractions = function() {
 
 	_findInteractions = function(objectAttributes, interactions, callback) {

@@ -1,3 +1,12 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
 var Interaction = require('inbeat-bl').getModel('interaction');
 var Attribute = require('inbeat-bl').getModel('attribute');
 var Account = require('inbeat-bl').getModel('account');
@@ -155,9 +164,13 @@ exports.updateTaxonomy = function(req, res) {
 
 /*
 *********************
- API
+ GAIN API
 *********************
 */
+
+/**
+ * Get number of interactions
+ */
 exports.numberOfInteractions = function(req, res) {
 	if (req.params.accountId) {
 		var param = {
@@ -176,6 +189,9 @@ exports.numberOfInteractions = function(req, res) {
 	}
 };
 
+/**
+ * Get all interactions
+ */
 exports.interactions = function(req, res) {
 	if (req.params.accountId) {
 		var param = {
@@ -192,7 +208,9 @@ exports.interactions = function(req, res) {
 	}
 };
 
-
+/**
+ * Delete interactions
+ */
 exports.deleteInteractions = function(req, res) {
     if (req.params.accountId) {
         var param = {
@@ -209,6 +227,9 @@ exports.deleteInteractions = function(req, res) {
     }
 };
 
+/**
+ * Get number of sessions
+ */
 exports.numberOfSessions = function(req, res) {
 	if (req.params.accountId) {
 		var param = {
@@ -227,6 +248,9 @@ exports.numberOfSessions = function(req, res) {
 	}
 };
 
+/**
+ * Get descriptions of objects
+ */
 exports.getObjectAttributes = function(req, res) {
 	if (req.query.pid) {
 		Attribute.findAllByParentObjectId(req.params.accountId, req.query.pid, function(err, attrs) {
@@ -244,6 +268,9 @@ exports.getObjectAttributes = function(req, res) {
 	}
 };
 
+/**
+ * Delete descriptions
+ */
 exports.deleteObjectAttributes = function(req, res) {
     if (req.params.accountId) {
         var param = {
@@ -260,6 +287,9 @@ exports.deleteObjectAttributes = function(req, res) {
     }
 };
 
+/**
+ * Insert descriptions
+ */
 exports.postObjectAttributes = function(req, res) {
 	if (req.body && req.body.length > 0) {
 		async.each(req.body, function(item, cb) {
@@ -282,6 +312,9 @@ exports.postObjectAttributes = function(req, res) {
 	}
 };
 
+/**
+ * Get taxonomy
+ */
 exports.objectAttributesTaxonomy = function(req, res) {
 	if (req.query.id) {
 		ObjectTaxonomy.objectAttributesTaxonomy(req.params.accountId, req.query.id, null, false, function(err, data) {
@@ -292,6 +325,9 @@ exports.objectAttributesTaxonomy = function(req, res) {
 	}
 };
 
+/**
+ * Get taxonomy as a flat JSON
+ */
 exports.objectAttributesTaxonomyFlat = function(req, res) {
 	if (req.query.id) {
 		ObjectTaxonomy.objectAttributesTaxonomy(req.params.accountId, req.query.id, null, true, function(err, data) {
@@ -323,16 +359,20 @@ exports.userSessionInterest = function(req, res) {
 };
 */
 
+/**
+ * Export interests
+ */
 exports.userExportInterest = function(req, res) {
 	if (req.params.accountId) {
         var projection = [];
         if(req.query.filter) {
             projection = req.query.filter.split(",");
         }
+        // export aggregated data
         AggregationTableFormat.findWithProjection(req.params.accountId, req.query.uid, projection, function(err, interests) {
 
             interests = JSON.parse(JSON.stringify(interests));
-
+            // output normalization
             for(var i=0;i<interests.length;i++){
                 if(interests[i].interest && interests[i].interest>1){
                     interests[i].interest = 1;
@@ -344,6 +384,7 @@ exports.userExportInterest = function(req, res) {
                     interests[i].interest = parseFloat(interests[i].interest);
                 }
             }
+            // Conneg specification of formats
 			res.format({
                 'application/json': function() {
                     res.set({ 'content-type': 'application/json; charset=utf-8' });
@@ -369,6 +410,9 @@ exports.userExportInterest = function(req, res) {
 
 };
 
+/**
+ * Delete existing data
+ */
 exports.deleteUserExportInterest = function(req, res) {
     if (req.params.accountId) {
         var param = {

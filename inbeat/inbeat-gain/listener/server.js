@@ -1,3 +1,12 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
 // http server
 var http = require('http');
 // db
@@ -9,9 +18,6 @@ var config = require("../config");
 var logger = config.Logger;
 
 var port = config["inbeat-gain"]["listener-port"];
-// if (process.argv[2]) {
-//     port = process.argv[2];
-// }
 
 // start simple server
 http.createServer(function(req, res) {

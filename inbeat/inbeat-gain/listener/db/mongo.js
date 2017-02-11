@@ -1,3 +1,12 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
 // imports
 var logger = require('../../config').Logger;
 
@@ -9,6 +18,9 @@ var AggregationTableFormat = require('inbeat-bl').getModel('aggregation-tablefor
 
 var async = require('async');
 
+/**
+ * Store data to existing collections
+ */
 exports.add = function(data, callbackSaved) {
     // verify account id
     Account.isVerified(data.accountId, function(valid, account) {

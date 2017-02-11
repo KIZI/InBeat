@@ -1,3 +1,16 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+/**
+ * interaction model object
+ */
+
 var Interaction = function() {
 
 	var async = require('async');

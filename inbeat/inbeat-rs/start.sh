@@ -1,4 +1,5 @@
 #!/bin/bash
+# @author: Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
 # echo "InBeat RS"
 # echo "----------------------------->"
 

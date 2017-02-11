@@ -1,18 +1,26 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+/**
+ * Business logic to properly prepare communication format for external service of EasyMiner
+ */
+
 var MinerXml = function(){
 
     var _ = require('underscore');
 
+    // prepare PMML format
 	var _getDictionary = function(data, params, callback){
 
 		var datasetname = params.tablename;
 
-		//var columns = data.slice(5);
         var columns = _.without(data,"accountId","userId","sessionId","last","objectId","parentObjectId","interest");
-
-		//console.log(data,columns);
-		//columns.splice(columns.indexOf('NonProfitOrganisation'), 1);
-
-
 
 		var out = "";
 		out += '<?xml version="1.0" encoding="utf-8"?>\n';
@@ -29,12 +37,7 @@ var MinerXml = function(){
 		out += '<MiningBuildTask>\n';
 			out += '<Extension name="DatabaseDictionary">\n';
 			out += '<Table name="'+datasetname+'">\n';
-			//out += '<Table name="'+datasetname+'" reloadTableInfo="yes">\n';
-			out += '<Columns>\n';		
-			
-			//out += '<Column dataType="string" name="sessionId"/>\n';
-			//out += '<Column dataType="string" name="objectId"/>\n';
-			//out += '<Column dataType="string" name="subobjectId"/>\n';
+			out += '<Columns>\n';					
 			out += '<Column dataType="float" name="interest"/>\n';
 			
 			for(i=0;i<columns.length;i++){
@@ -50,9 +53,6 @@ var MinerXml = function(){
 
 		out += '<DataDictionary>\n';
 
-			//out += '<DataField dataType="string" name="sessionId" optype="nominal"/>\n';
-			//out += '<DataField dataType="string" name="objectId" optype="nominal"/>\n';
-			//out += '<DataField dataType="string" name="subobjectId" optype="nominal"/>\n';
 			out += '<DataField dataType="float" name="interest" optype="continuous"/>\n';
 			for(i=0;i<columns.length;i++){				
 				out += '<DataField dataType="float" name="'+columns[i]+'" optype="continuous"/>\n';
@@ -100,6 +100,7 @@ var MinerXml = function(){
 	};
 
 
+	// prepare PMML format
 	var _getTask = function(data, params, callback){
 
 		var datasetname = params.tablename;
@@ -127,23 +128,17 @@ var MinerXml = function(){
 		out += '<BBASettings>\n';
 
 			for(i=0;i<columns.length;i++){	
-				//if(columns[i].substring(0,1)==='r'){
 					out += '<BBASetting id="'+columns[i]+'_BBA">\n';
 		            	out += '<Text>'+columns[i]+'</Text>\n';
 		            	out += '<Name>'+columns[i]+'</Name>\n';
 		            	out += '<FieldRef>'+columns[i]+'</FieldRef>\n';
 		            	out += '<Coefficient>\n';
-		            		//out += '<Type>Subset</Type>\n';
-		            		//out += '<MinimalLength>1</MinimalLength>\n';
-		            		//out += '<MaximalLength>1</MaximalLength>\n';
 
 		            		out += '<Type>One category</Type>\n';
 		            		out += '<Category>1</Category>\n';
 
 		            	out += '</Coefficient>\n';
 		            out += '</BBASetting>\n';
-		            //break;
-		        //}
 			}
 
 			out += '<BBASetting id="cons_bba">\n';
@@ -161,7 +156,6 @@ var MinerXml = function(){
 		out += '<DBASettings>\n';
 
 			for(i=0;i<columns.length;i++){	
-				//if(columns[i].substring(0,1)==='r'){
 					out += '<DBASetting id="'+columns[i]+'_DBA_PARTCEDENT" type="Conjunction">\n';
 			            out += '<BASettingRef>'+columns[i]+'_DBA_LIT</BASettingRef>\n';
 			            out += '<MinimalLength>0</MinimalLength>\n';
@@ -170,17 +164,13 @@ var MinerXml = function(){
 			            out += '<BASettingRef>'+columns[i]+'_BBA</BASettingRef>\n';
 			            out += '<LiteralSign>Positive</LiteralSign>\n';
 		            out += '</DBASetting>\n';
-		            //break;
-				//}
 			}
 
 			out += '<DBASetting id="ant" type="Conjunction">\n';
 
 				for(i=0;i<columns.length;i++){	
-					//if(columns[i].substring(0,1)==='r'){	            		
 	            		out += '<BASettingRef>'+columns[i]+'_DBA_PARTCEDENT</BASettingRef>\n';
-	            		//break;
-	            	//}
+
 	            }
 	            out += '<MinimalLength>1</MinimalLength>\n';
             out += '</DBASetting>\n';

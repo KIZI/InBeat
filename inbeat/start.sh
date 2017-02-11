@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# @author: Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+# Start all InBeat modules
+
 echo "Starting InBeat"
 echo "----------------------------->"
 

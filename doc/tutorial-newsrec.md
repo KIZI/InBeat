@@ -1,7 +1,5 @@
 # InBeat - News Recommender System
 
-![](https://docs.google.com/drawings/export/png?id=12K2DH4qPVp0dTwMpk82OUhQt1KmiIqoLTiN4YNlK-gE)
-
 ###Scope
 This tutorial describes a basic use case, in which InBeat is used to recommend articles on a news website using  association rules. 
 
@@ -10,6 +8,8 @@ The rules are used to suggest  news items based on location and day time of the 
 rule | support | confidence
 --- | --- | ---
 {location=GER,daytime=evening} => {objectId=http://example.com/objects/object2} | 0,333333333333333 | 1
+
+![](https://docs.google.com/drawings/export/png?id=12K2DH4qPVp0dTwMpk82OUhQt1KmiIqoLTiN4YNlK-gE)
 
 ###Input data
 For each page view, the website sends an event to InBeat giving user id, identifier of the visited news article (i.e. object id in InBeat terminology), user location and daytime. 

@@ -12,7 +12,7 @@ rule | support | confidence
 ![](https://docs.google.com/drawings/export/png?id=12K2DH4qPVp0dTwMpk82OUhQt1KmiIqoLTiN4YNlK-gE)
 
 ###Input data
-For each page view, the website sends an event to InBeat giving user id, identifier of the visited news article (i.e. object id in InBeat terminology), user location and daytime. 
+For each page view the website sends an event to InBeat giving user id, identifier of the visited news article (i.e. object id in InBeat terminology), user location and daytime. 
 
 
 
@@ -24,7 +24,7 @@ For each page view, the website sends an event to InBeat giving user id, identif
 - [Invoking recommendation](#recommendation)
 
 ## Receiving pageviews
-Let us assume, we had three visitors, each viewing one of the two distinct two news articles.
+Let us assume we had three visitors, each viewing one of the two distinct news articles.
 
 userId | objectId | location | daytime
 --- | --- | --- | --- 
@@ -191,10 +191,10 @@ or
 curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: application/json" -d@export.json "http://localhost:8880/pl/api/INBEAT-TUTORIAL/data?uid=newsrec"
 ```
 
-Rule mining can be initiated with the following set of parameters: type (jsapriori|arules|lm), support and confidence. We will use the built-in jsapriori rule learner.
+Rule mining can be initiated with the following set of parameters: `type` (jsapriori|arules|lm), `support` and `confidence`. We will use the built-in jsapriori rule learner.
 Support and confidence are two standard parameters of association rule learning, for explanation refer e.g. to [Wikipedia](http://en.wikipedia.org/wiki/Association_rule_learning#Useful_Concepts).
 
-ClassName is the target class for classification, which will be used for the right hand side of the rules. For this use case: obejctId.
+`ClassName` is the target class for classification, which will be used for the right hand side of the rules. For this use case: `obejctId`.
 
 ```json
 {
@@ -326,7 +326,7 @@ Example of output - set of obejctIds :
     }
 ]
 ```
-Both _http://example.com/objects/object1_ and _http://example.com/objects/object2_ are recommended, because the user description is matched by left hand sides of   two rules: (_{daytime=evening} => {objectId=http://example.com/objects/object2}_ and _{location=USA} => {objectId=http://example.com/objects/object1}_)
+Both _http://example.com/objects/object1_ and _http://example.com/objects/object2_ are recommended, because the user's description is matched by left hand sides of   two rules: (_{daytime=evening} => {objectId=http://example.com/objects/object2}_ and _{location=USA} => {objectId=http://example.com/objects/object1}_)
 
 
 

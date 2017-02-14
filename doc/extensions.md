@@ -4,9 +4,9 @@ This web page covers currently available possibilities for custom extensions (Ot
 ## Custom Interceptors
 Interceptors are designed for processing of input interactions. Developers can create their own custom collector and processor of interaction that intercepts and transform the data formats. 
 
-Currently mainly REST based interceptor is supported.
+Currently mainly REST-based interceptor is supported.
 
-Required format for the storage engine is following (Required attributes are also mentioned):
+Required format for the storage engine is following (required attributes are also mentioned):
 ```json
 var interaction = {};
 interaction.date = new Date();
@@ -25,7 +25,7 @@ interaction.session = {};
 interaction.session.attributes = {};
 ```
 
-Developers should create their own implementations of transformations from their input format to the required format
+Developers should create their own implementations of transformations from their input format to the required format,
 
 Example:
 ```javascript
@@ -67,7 +67,7 @@ Place the implementation to the directory: ``inbeat/inbeat-gain/listener/interce
 
 Developers can connect their own rule mining implementations to learn user preference models. 
 
-Currently three miner are supported:
+Currently three miner types are supported:
 
 - R arules Apriori
 - Pure JS Apriori implementation

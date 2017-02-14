@@ -21,7 +21,7 @@
 
 ## Extensions
 
-Currently supported main custom extensions (Others will be announced soon!):
+Currently supported main custom extensions (additional are coming soon!):
 
 - [Custom interceptors](./extensions.md#custom-interceptors)
 - [Custom PL miners](./extensions.md#custom-miners)

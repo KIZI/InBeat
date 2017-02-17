@@ -1,3 +1,16 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+
+/**
+ * Processing data comming to the REST interceptor
+ */
 exports.processRequest = function(request, callbackRequest) {
 
 	// return if invalid request
@@ -27,6 +40,9 @@ exports.processRequest = function(request, callbackRequest) {
 
 };
 
+/**
+ * Transform data to the unified representation
+ */
 var _processData = function(request, parsedData, callbackRequest) {
 	var interaction = {};
 	interaction.date = new Date();

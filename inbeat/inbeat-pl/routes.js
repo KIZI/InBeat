@@ -1,3 +1,12 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
 var Logger = require('./config').Logger;
 
 var async = require('async');
@@ -9,7 +18,11 @@ var MinerJS = require('inbeat-bl').getLogic('miner-js');
 var Rules = require('inbeat-bl').getModel('rule');
 var PLData = require('inbeat-bl').getModel('pl-data');
 
+/**
+ * Uploading input data for preference learning
+ */
 exports.putData = function(req, res) {
+    // validation of inputs
     if (req.params.accountId && req.query.uid && req.body && (req.headers['content-type'] === 'application/json' || req.headers['content-type'] === 'application/json;charset=UTF-8')) {
         var name = (req.params.accountId + "-" + req.query.uid).replace(/\W/g, '_');
         if(req.body!==null && req.body.length>0){
@@ -26,10 +39,14 @@ exports.putData = function(req, res) {
     }
 };
 
+/**
+ * Executing the mining process
+ */
 exports.mineRules = function(req, res) {
     if (req.params.accountId && req.query.uid) {
         var name =  (req.params.accountId + "-" + req.query.uid).replace(/\W/g, '_');
         var input = req.body;
+        // default miner 
         var curMiner = Miner;
         var curType = "application/xml";
 
@@ -38,6 +55,7 @@ exports.mineRules = function(req, res) {
         task.support = (input && input.support)?input.support:0.01;
         task.className = (input && input.className)?input.className:"interest";
 
+        // selection of specific Rule Miner
         if(input && input.type) {
             switch (input.type) {
                 case "arules":
@@ -57,6 +75,7 @@ exports.mineRules = function(req, res) {
             }
         }
 
+        // execute mining task
         curMiner.mine(name,task,function(err, data){
             Rules.upsert({
                 'id': name,
@@ -73,6 +92,9 @@ exports.mineRules = function(req, res) {
     }
 };
 
+/**
+ * Exporting rules from the DB
+ */
 exports.getRules = function(req, res) {
 	if (req.params.accountId && req.query.uid) {
 		var p = {

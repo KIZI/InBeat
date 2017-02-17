@@ -1,3 +1,12 @@
+#
+# InBeat - Interest Beat
+# @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+# 
+# Use of this source code is governed by a license that
+# can be found in the LICENSE file. 
+
+# arules miner
+
 args<-commandArgs(TRUE)
 
 library(arules) # load lib
@@ -20,10 +29,12 @@ train <- train[,-which(colnames(train)=="userId")]
 if (className!="last")
 train <- train[,-which(colnames(train)=="last")]
 
+# conversions
 if(nrow(train)>1){
     train <- train[,c(1,which(colSums(sapply(train[,c(2:ncol(train))],as.numeric))>0)+1)]
 }
 
+# discretize
 if(className=="interest") {
 	train[which(as.numeric(train[,1])>0),1] <- "positive"
 	train[which(as.numeric(train[,1])<0),1] <- "negative"

@@ -1,5 +1,19 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+
+/**
+ * Propagation of values within the taxonomy
+ */
 var ValuePropagation = function(){
 
+	// propagation of values
 	_propagate = function(taxonomy, entities, callback) {		
 		var tax = {};
 		var data = {};
@@ -16,6 +30,7 @@ var ValuePropagation = function(){
 		callback(null,tax);
 	};
 
+	// aggregation values from child nodes
 	_aggregate = function (o){		
 		var sum = 0;
 		var numChild = 0;
@@ -33,6 +48,7 @@ var ValuePropagation = function(){
 		return o.value;
 	};
 
+	// noramlize all values according to the root value
 	_normalize = function (o, value){
 		if(value!=0) {
 			o.value /= value;

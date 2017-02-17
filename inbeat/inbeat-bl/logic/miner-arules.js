@@ -1,3 +1,15 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+/**
+ * Business logic to properly execute external R process with arule miner
+ */
 var MinerArules = function() {
 
     // modules
@@ -15,16 +27,20 @@ var MinerArules = function() {
 
     // perform mining task
     var _task = function(name,task,callback){
-        var sys = require('sys')
+        var sys = require('sys');
         var exec = require('child_process').exec;
+        // export data
         PLData.findById(name,function(err,data){
             if(err || !data || !data.content){
                 callback(err,null);
                 return;
             }
+            // create tmp dir
             temp.mkdir("miner-arules",function(err, dirPath) {
                 UserInterest.formatExportOutput(JSON.parse(data.content), 'text/csv', {}, function(err, out) {
+                    // save data
                     fs.writeFileSync(dirPath+"/"+name+".csv", out);
+                    // exec externcal scripts
                     exec('Rscript "' + __dirname + '/../lib/arules.R" ' + dirPath+"/"+name+".csv " + dirPath+"/"+name+"_rules.csv "+task.support+" "+task.confidence+" "+task.className, function (error, stdout, stderr) {
                         if(error) {
                             callback(null, {error: error, stdout: stdout, stderr: stderr});
@@ -38,6 +54,9 @@ var MinerArules = function() {
         });
     };
 
+    /**
+    * Conversion of csv to json (Currently not used!)
+    */    
     var _csvToJson = function(path,callback){
         var instream = fs.createReadStream(path);
         var outstream = new stream;

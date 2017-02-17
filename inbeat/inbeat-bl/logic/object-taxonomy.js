@@ -1,3 +1,16 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+
+/**
+ * Creating object taxonomy - tree based or flat JSON structire
+ */
 var ObjectTaxonomy = function(){
 
 	var Attribute = require('../model/attribute');
@@ -12,8 +25,11 @@ var ObjectTaxonomy = function(){
 		}
 	};
 
+	// create taxonomy for speciic object - merge attributes and taxonomy
 	_objectAttributesTaxonomy = function(accountId, objectId, parentObjectId, flat, callback){
+		// get attributes
 		Attribute.findAllByObjectParentObjectId(accountId, objectId, parentObjectId, function(err, attrs){
+			// get taxonomy
             AggregationTaxonomy.findById(accountId, function(err, aggregationTaxonomy){
 				if(err || !aggregationTaxonomy || !aggregationTaxonomy.content || aggregationTaxonomy.conten==="") {
 					// console.log(err);
@@ -36,6 +52,7 @@ var ObjectTaxonomy = function(){
 						callback(null, result);
                         return;
 					}
+					// propagate all values (attributes) within the taxonomy
 					for(var attr in attrs){
                         (function(attri){
                             ValuePropagation.propagate(taxonomy, attrs[attri].entities, function(err, tax){

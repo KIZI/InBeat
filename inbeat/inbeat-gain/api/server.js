@@ -1,3 +1,12 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var compression = require('compression');
@@ -31,7 +40,7 @@ app.put('/gain/api/:accountId', auth, routes.updateAccount);
 app.get('/gain/api/:accountId/aggregation/rules', auth, routes.getRules);
 app.put('/gain/api/:accountId/aggregation/rules', auth, routes.updateRules);
 app.get('/gain/api/:accountId/aggregation/taxonomy', auth, routes.getTaxonomy);
-app.put('/gain/api/:accountId/aggregation/taxonomy', auth, routes.updateTaxonomy);
+app.put('/gain/api/:accountId/aggregation/taxonomy', auth, bodyParser.text({limit:'5mb'}), routes.updateTaxonomy);
 
 // stats
 app.get('/gain/api/:accountId/interaction/number', auth, routes.numberOfInteractions);

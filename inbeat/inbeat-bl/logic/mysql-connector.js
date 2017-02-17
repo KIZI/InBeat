@@ -1,3 +1,16 @@
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
+ */
+
+/**
+ * Business logic to communicate with Mysql as a complemntary DB
+ */
+
 var MysqlConnector = function() {
 
 	var mysql = require('mysql');
@@ -15,7 +28,6 @@ var MysqlConnector = function() {
 		if (connection) {
 			connection.end();
 			connection = null;
-			//connection.destroy();
 		}
 	};
 

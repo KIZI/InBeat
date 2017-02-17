@@ -1,12 +1,15 @@
-/*
-
-	http://win.ua.ac.be/~adrem/bibrem/pubs/fpm_survey.pdf
-	http://www-users.cs.umn.edu/~kumar/dmbook/ch6.pdf
-	https://fenix.tecnico.ulisboa.pt/downloadFile/3779571250095/licao_9.pdf
-	http://staffwww.itn.liu.se/~aidvi/courses/06/dm/lectures/lec7.pdf
-
+/**
+ * InBeat - Interest Beat
+ * @author Jaroslav Kuchař (https://github.com/jaroslav-kuchar)
+ * 
+ * Use of this source code is governed by a license that
+ * can be found in the LICENSE file. 
+ * 
  */
 
+/**
+ * Implementation of Apriori algorithm in JS
+ */
 
 (function() {
 /**

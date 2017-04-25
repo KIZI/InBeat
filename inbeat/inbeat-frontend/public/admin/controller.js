@@ -203,16 +203,21 @@ App.controller('gain-aggregation-rules', ['$scope','$http',function($scope,$http
 
 App.controller('gain-aggregation-taxonomy', ['$scope','$http',function($scope,$http) {
     $scope.clear();
+    $scope.taxonomyOutput = false;
     $scope.getDefault = function(){
         $http.get('files/gain-aggregation-taxonomy.json').success(function(data, status, headers, config) {
             $scope.output(data, status, headers, config);
             $scope.source = $scope.prettyPrint(data);
+            $scope.taxonomyOutput = true;
+            draw(data);
         }).error($scope.output);
     };
     $scope.get = function(){
         $http.get('/gain/api/'+$scope.accountId+'/aggregation/taxonomy').success(function(data, status, headers, config) {
             $scope.output(data, status, headers, config);
             $scope.source = $scope.prettyPrint(data);
+            $scope.taxonomyOutput = true;
+            draw(data);
         }).error($scope.output);
     };
     $scope.update = function(){
@@ -272,19 +277,30 @@ App.controller('gain-export', ['$scope','$http',function($scope,$http) {
 
 App.controller('gain-description', ['$scope','$http',function($scope,$http) {
     $scope.clear();
+    $scope.taxonomyOutput = false;
     $scope.description = function(){
+        $scope.taxonomyOutput = false;
         $http.get('/gain/api/'+$scope.accountId+'/object/attributes'+($scope.objectId?("?id="+$scope.objectId):"")).success($scope.output).error($scope.output);
     };
     $scope.delete = function(){
+        $scope.taxonomyOutput = false;
         $http.put('/gain/api/'+$scope.accountId+'/object/attributes'+($scope.objectId?("?id="+$scope.objectId):"")).success($scope.output).error($scope.output);
     };
     $scope.taxonomy = function(){
-        $http.get('/gain/api/'+$scope.accountId+'/object/taxonomies'+($scope.objectId?("?id="+$scope.objectId):"")).success($scope.output).error($scope.output);
+        $http.get('/gain/api/'+$scope.accountId+'/object/taxonomies'+($scope.objectId?("?id="+$scope.objectId):""))
+        .success(function(data, status, headers, config) {
+            $scope.output(data, status, headers, config);
+            $scope.taxonomyOutput = true;
+            draw(data[0].taxonomy);
+        })
+        .error($scope.output);
     };
     $scope.flattaxonomy = function(){
+        $scope.taxonomyOutput = false;
         $http.get('/gain/api/'+$scope.accountId+'/object/flattaxonomies'+($scope.objectId?("?id="+$scope.objectId):"")).success($scope.output).error($scope.output);
     };
     $scope.upsert = function(){
+        $scope.taxonomyOutput = false;
         $http.post('/gain/api/'+$scope.accountId+'/object/attributes', $scope.source).success($scope.output).error($scope.output);
     };
     $http.get('files/gain-description.json').success(function(data, status, headers, config) {

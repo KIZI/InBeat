@@ -21,3 +21,21 @@
 <h3>Output:</h3>
 <pre class="outputcode" ng-bind="result">
 </pre>
+
+
+<div ng-show="taxonomyOutput">
+<script type="text/javascript" src='/js/d3.v3.min.js'></script>
+<script type="text/javascript" src='tax.js'></script>
+<style>
+    svg {
+        border: solid 1px #ccc;
+        font: 10px sans-serif;
+    }
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1.5px;
+    }
+</style>
+<div id="viz"></div>
+</div>

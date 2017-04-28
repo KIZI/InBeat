@@ -13,6 +13,9 @@
 * [Advanced: sensor support and ontologies](./tutorial-smarttv.md) This tutorial is accompanied by a [demo](http://inbeat.eu/demo/base/) using a SmartTV emulated by YouTube player.
 * [Integrating InBeat with other recommender frameworks](./tutorial-external.md) Shows how to use InBeat in conjunction with other recommender algorithms, such as various collaborative  filtering, implemented in other recommender toolboxes  [MyMediaLite](http://www.mymedialite.net/).
 
+## Web UI
+* [Admin console](./admin-ui.md) Documentataion of the Web-based user interface.
+
 ## REST APIs
 
 - [GAIN REST API](../inbeat/inbeat-frontend/public/gain/docs/api.txt) ([on-line](http://inbeat.eu/gain/docs/rest))

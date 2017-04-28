@@ -176,3 +176,12 @@ Example:
 ```json
 [{"objectId":"http://example.com/objects/object3","rank":"negative","confidence":1}]
 ```
+
+## Screenshots - Examples
+
+### Propagation visualization in the admin console
+![GitHub Logo](images/taxonomy-propagation-admin.png)
+
+### Preference learning
+![GitHub Logo](images/taxonomy-propagation-admin.png)
+

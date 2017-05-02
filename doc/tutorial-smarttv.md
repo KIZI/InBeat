@@ -112,13 +112,15 @@ curl --user "INBEAT-TUTORIAL:INBEAT-TUTORIAL" -X PUT --header "Content-Type: app
 
 ### Aggregation Taxonomy
 
-Let the objects  be described using the following taxonomy (ontology):
+Let the objects  be described using the following simplified demonstration taxonomy (ontology):
 
 * Root
   * Food
   * Electronics
     * Televisions
     * Radios
+
+
 
 
 JSON representation:
@@ -144,6 +146,13 @@ JSON representation:
   ]
 }
 ```
+
+In the example above:
+* entityURI is URI of a specific entity (in this case in DBpedia) describing the object the user interacted with
+* typeURI maps the entity to a class in the ontology/aggregation taxonomy.  This serves for propagation allowing generalization within the taxonomy. 
+Both entityURI and typeURI are used for learning of preference models (such as rules). For more information refer to entry on the [Aggregation Taxonomy](https://github.com/KIZI/InBeat/blob/master/README.md#aggregation-taxonomy).
+
+
 
 Use the web admin console [http://localhost:8880/admin/#/gain-aggregation-taxonomy](http://localhost:8880/admin/#/gain-aggregation-taxonomy) or 
 

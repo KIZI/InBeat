@@ -152,6 +152,13 @@ curl --user "INBEAT-TEST:INBEAT-TEST" -X PUT --header "Content-Type: application
   "body": "{\"name\": \"Root\",\"uri\": \"http://example.com/taxonomy/root\",\"children\": [{      \"name\": \"Food\",\"uri\": \"http://example.com/taxonomy/food\"},{\"name\": \"Electronics\",      \"uri\": \"http://example.com/taxonomy/electronics\",\"children\": [{\"name\": \"Televisions\", \"uri\": \"http://example.com/taxonomy/televisions\"},{\"name\": \"Radios\", \"uri\": \"http://example.com/taxonomy/radios\"}]}]}"
 }'
 ```
+In the example above:
+* entityURI is URI of a specific entity (in this case in DBpedia) describing the object the user interacted with
+* typeURI maps the entity to a class in the ontology/aggregation taxonomy.  This serves for propagation allowing generalization within the taxonomy. 
+Both entityURI and typeURI are used for learning of preference models (such as rules). 
+
+
+Please note that the example uses a simplified demonstration taxonomy (with classes such as "http://example.com/taxonomy/food") rather than a real world ontology, such as the DBpedia Ontology. The reason is that visualizations of real world ontologies are not as intelligible for the purposes of the tutorial.
 
 ### Events
 

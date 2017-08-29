@@ -4,7 +4,7 @@
 
 Interest Beat is a service for recommendation of content. InBeat was designed with emphasis on versatility, scalability and extensibility. The core contains the General Analytics INterceptor module, which collects and aggregates user interactions, the Preference Learning module and the Recommender System module.
 
-If you wuolud like to cite our work, please use:
+If you would like to cite our work, please use:
 
 ```bib
 @article{Kuchar:2017:InBeat,

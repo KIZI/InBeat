@@ -4,6 +4,21 @@
 
 Interest Beat is a service for recommendation of content. InBeat was designed with emphasis on versatility, scalability and extensibility. The core contains the General Analytics INterceptor module, which collects and aggregates user interactions, the Preference Learning module and the Recommender System module.
 
+If you wuolud like to cite our work, please use:
+
+```bib
+@article{Kuchar:2017:InBeat,
+title = "InBeat: JavaScript recommender system supporting sensor input and linked data ",
+author = "Jaroslav Kuchař and Tomáš Kliegr"
+journal = "Knowledge-Based Systems ",
+issn = "0950-7051",
+year = "2017",
+doi = "https://doi.org/10.1016/j.knosys.2017.07.026",
+url = "http://www.sciencedirect.com/science/article/pii/S0950705117303428",
+}
+
+```
+
 ## Latest updates
 
 - 2017-01-24: Included TravisCI to continuously check the builds.
@@ -351,7 +366,9 @@ Example of output for the fourth object (about _Radios_, _Radio_). Since user li
 ## References & Awards
 
 Publications:
-
+* Kuchař J., Kliegr T. **InBeat: JavaScript recommender system supporting sensor input and linked data**,
+Knowledge-Based Systems, ISSN 0950-7051, 2017
+  * http://dx.doi.org/10.1016/j.knosys.2017.07.026
 * Kuchař J., Kliegr T. **Bag-of-Entities text representation for client-side (video) recommender systems**. In First Workshop on Recommender Systems for Television and online Video (RecSysTV), ACM RecSys 2014 Foster City, Silicon Valley, USA, 6th-10th October 2014
   * http://recsystv.org/
 * Kuchař J., Kliegr T. **Doporučování multimediálního obsahu s využitím senzoru Microsoft Kinect.** Znalosti 2014. 13th Annual Conference, Jasná pod Chopkom, Nízké Tatry, Slovakia, ISBN 978-80-245-2054-4, 2014

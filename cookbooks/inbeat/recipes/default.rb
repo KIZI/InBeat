@@ -33,7 +33,7 @@ bash "nodejs" do
   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
   apt-get install -y nodejs
   apt-get install -y npm || true
-  ln -sf /usr/bin/nodejs /usr/bin/node
+  # ln -sf /usr/bin/nodejs /usr/bin/node
 	EOH
   not_if { File.exist?("/usr/bin/node") }
 end

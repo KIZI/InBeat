@@ -87,7 +87,7 @@ bash "r repos" do
   # echo "deb http://cran.fhcrc.org/bin/linux/ubuntu $codename/" | sudo tee -a /etc/apt/sources.list > /dev/null
   echo "deb https://cloud.r-project.org/bin/linux/ubuntu $codename-cran35/" | sudo tee -a /etc/apt/sources.list > /dev/null
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-  add-apt-repository ppa:marutter/rdev
+  # add-apt-repository ppa:marutter/rdev
   apt-get update
   EOH
 end
